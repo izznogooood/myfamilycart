@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container mt-4 text-center">
+        <legend class="border-bottom mt-4">Your Top 50 Items</legend>
+            <ul class="list-unstyled">
+
+                {% for word in user.words.all|slice:":50" %}
+                    <li> {{ word.count }} {{ word.name }}</li>
+                {% endfor %}
+
+            </ul>
+        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
+            Reset Item Count
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header danger">
+                <legend class="modal-title" id="exampleModalLabel">Resetting Item Count</legend>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  Resetting your Item Count is not something you can undo, it
+                  will also affect your autocompletes when adding a new item.
+                  <br>
+                  <br>
+                  <span class="display-4">Are you sure?</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  <a href="{% url 'delete-all-words' %}">
+                      <button id="reset-items" type="button" class="btn btn-danger">Reset</button>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock content %}

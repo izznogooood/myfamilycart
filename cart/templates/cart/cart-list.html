@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <legend class="border-bottom text-center">My Carts</legend>
+    <div id="cart-list">
+        {% for cart in carts %}
+
+            <a href="{{ cart.get_absolute_url }}" class="btn btn-primary btn-block mt-4 font-weight-bold">{{ cart.name }}</a>
+
+        {% endfor %}
+        <!-- JS inserts here -->
+    </div>
+
+    <legend class="border-bottom text-center mt-4">Add Cart</legend>
+    <form id="cart-form" class="form-group">
+        <div class="col">
+            <input type="text" id="cart-name" placeholder="Groceries..." class="form-control">
+        </div>
+        <input type="submit" value="Add" class="btn btn-secondary btn-block mt-4">
+    </form>
+</div>
+<script src="{% static 'cart/js/cart-list.js' %}"></script>
+{% endblock content %}

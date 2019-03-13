@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: sh /app/entrypoint.sh
+    volumes:
+      - ./staticfiles:/app/staticfiles
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    environment:
+      - DJANGO_SETTINGS_MODULE=myfamily.settings.pro # <-- Secrets :)
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=postgres
+      - SQL_USER=postgres
+      - SQL_PASSWORD=postgres
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DATABASE=postgres
+    depends_on:
+      - db
+  db:
+    image: postgres:10.5-alpine
+    volumes:
+      - ./postgres:/var/lib/postgresql/data/

@@ -1,0 +1,29 @@
+/*Prevent Vue components from flashing on load*/
+[v-cloak] {
+    display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+    max-width: 600px;
+}
+
+.modal-header.danger {
+  background: #BC003C;
+  color: #fff
+}
+
+/*making the navbar smaller for cell phones*/
+@media only screen and (max-width: 500px) {
+  h1.display-4.text-center {
+    font-size: 35px;
+  }
+}
+

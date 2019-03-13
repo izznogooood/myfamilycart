@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<p id="cart-id" hidden>{{ cart.id }}</p>
+<div class="container mt-4">
+    <form id="cart-form">
+        <div class="form-row">
+            <div class="col-sm-2 col-2">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" class="form-control" placeholder="1">
+            </div>
+            <div class="col">
+                <label for="name">Item</label>
+                <input type="text" id="name" class="form-control" list="words" autocomplete="off">
+                <datalist id="words">
+
+                  {% for word in user.words.all %}
+                    <option value="{{ word }}">
+                  {% endfor %}
+
+                </datalist>
+            </div>
+        </div>
+        <input type="submit" value="Add Item" class="btn btn-primary btn-block mt-4">
+    </form>
+    <legend class="text-center mt-4 display-4">{{ cart.name }}</legend>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th width="15%">Quantity</th>
+                <th>Item</th>
+                <th width="15%"></th>
+            </tr>
+        </thead>
+        <tbody id="item-list">
+
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.name }}</td>
+                    <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header danger">
+                <legend class="modal-title" id="exampleModalLabel">Delete Cart?</legend>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                  Deleting your Cart is not something you can undo!
+                  <br>
+                  You will loose all your items in this cart.
+                  <br>
+                  <br>
+                  <span class="display-4">Are you sure?</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <a href="{% url 'cart:delete-cart' cart.id %}">
+                  <button id="delete-cart" type="button" class="btn btn-danger">Delete</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+<script src="{% static 'cart/js/cart-detail.js' %}"></script>
+{% endblock content %}

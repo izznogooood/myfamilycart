@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+    <!-- Fontawsome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+
+    <!-- Bootstrap Theme -->
+    <link rel="stylesheet" href="{% static 'css/sketchy_bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block title %}
+    <title>MyFamilyCart</title>
+    {% endblock title %}
+
+</head>
+<body>
+
+    {% if messages %}
+        <div class="container mt-4 django-message">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="container mt-4" id="nav">
+        <h1 class="display-4 text-center">
+            <a href="{% url 'cart:carts-list' %}">
+                <i class="text-primary fas fa-shopping-cart float-left"></i>
+                MyFamilyCart
+            </a>
+
+        {% if user.is_authenticated %}
+            <i v-cloak v-if="display" @click="toggleMenu" class="fas fa-times float-right" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse"></i>
+            <i v-else @click="toggleMenu" class="fas fa-bars float-right" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse"></i>
+        </h1>
+        <div class="collapse" id="collapse">
+          <div v-cloak class="row">
+              <div class="col"></div>
+              <div class="col-sm-4"></div>
+              <div class="col text-right mb-4">
+                  <a href="{% url 'cart:carts-list' %}" class="btn btn-primary btn-outline btn-block">My Carts</a>
+                  <a href="{% url 'top50' %}" class="btn btn-primary btn-outline btn-block">Top 50 Items</a>
+                  <a href="{% url 'profile' %}" class="btn btn-primary btn-outline btn-block">Profile</a>
+                  <a href="{% url 'logout' %}" class="btn btn-primary btn-outline btn-block">Logout</a>
+                  <button v-if="cart" type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">Delete Cart</button>
+              </div>
+          </div>
+        </div>
+        {%  endif %}
+
+    </div>
+
+    {% block content %}{% endblock content %}
+
+    <!-- Bootstrap 4-->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Project Specific -->
+    <script src="{% static 'js/vue.min.js' %}"></script>
+    <script src="{% static 'js/global.js' %}"></script>
+    <script src="{% static 'js/VueNavbar.js' %}"></script>
+</body>
+</html>
