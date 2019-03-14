@@ -23,6 +23,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls), # <-- Disabled for production
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
+    path('about/', user_views.about, name='about'),
     path('top50/', user_views.top50, name='top50'),
     path('password/', user_views.change_password, name='change-password'),
     path('delete-all-words/', user_views.delete_words, name='delete-all-words'),
