@@ -16,8 +16,9 @@ const navBar = new Vue({
   },
 
   created() {
-      const cart = document.querySelector('#cart-id');
-      if (cart) {this.cart = true}
+    // Looking for cart from hidden <p> passed in by Django
+    const cart = document.querySelector('#cart-id');
+    if (cart) {this.cart = true}
     },
 });
 
