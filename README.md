@@ -33,6 +33,8 @@ create an issue so we (especially me) can evolve and benefit from your input.
   
 No issue is to small, I want your input/ideas.
 
+*Notabene: Please do not make pull requests directly to the master branch.*
+
 
 **Functionality**
 
