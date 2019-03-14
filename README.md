@@ -15,7 +15,7 @@ Better instructions / readme will follow shortly.
 #### Contribution
 
 Clone the repo and have at it, manage.py has been altered to run settings.dev
-configuration.  
+configuration with a SQLite database.  
   
 Feel free to use this code for education / courses / tutorials and or what ever you want. 
 If you see something wrong or se a better solution for anything I would appreciate if you 
