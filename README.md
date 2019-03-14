@@ -11,7 +11,7 @@ In the meen time experiment and do what you want :).
 ![Models](doc/cart-items.png)
 
 
-Live at: https://myfamily.unialt.no (Responsive (Mobil Friendly))
+Live at: https://myfamily.unialt.no (Responsive (Mobile Friendly))
   
 ### About
 
