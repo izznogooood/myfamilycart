@@ -68,6 +68,7 @@ Utilizing Django to handle users / auth / login while using "normal" views as JS
 
 In order of expected implementation:
 
+* Adding "Home Screen" icons (Android / iOS)
 * Tests
 * CI/CD Pipeline
 
