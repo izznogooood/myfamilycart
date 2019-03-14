@@ -11,6 +11,7 @@ Todo:
  * Not sanitising HTML correctly when an item is initially inserted (although it is done correctly on page refresh; this is likely because you've got the add-an-item code twice, once in Django and once in Vue), so if I have HTML elements in the name of an item, they are rendered as HTML
  * no way to try the app without signing up
  * verify email ? 
+ * Adding "Home Screen" icons (Android / iOS)
 -->
 
 # ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Warning`
@@ -41,7 +42,6 @@ Be aware that this app is in active development.
 
 In order of expected implementation:
 
-* Adding "Home Screen" icons (Android / iOS)
 * Sharing of carts between users / familyname (shared accounts)
   * Removing the purpose of a familyname when users can share lists
 * Self hosted version (Docker or Snap or both)
