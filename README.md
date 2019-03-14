@@ -47,7 +47,10 @@ create an issue so we (especially me) can evolve and benefit from your input.
   
 No issue is to small, I want your input/ideas.
 
-*Notabene: Please do not make pull requests directly to the master branch.*
+*Notabene: Please do not make pull requests directly to the master branch.  
+Any suggestions (packing) that makes the code less readable will be rejected as it 
+goes against the purpose of the project which is for everyone to learn / be able
+to read the code.*
 
 
 **Functionality**
