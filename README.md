@@ -55,7 +55,8 @@ to read the code.*
 
 **Functionality**
 
-Utilizing Django to handle users / auth / login while using "normal" views as JS endpoints. 
+Utilizing Django to handle users / auth / login / backend tasks while JS onePage
+apps take advantage of "normal" views as JS endpoints. 
 
 **Basic Overview**
 
