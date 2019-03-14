@@ -8,6 +8,9 @@ from .models import Word
 from .forms import RegisterForm, UpdateUserForm
 
 
+# ######################## User views #########################
+
+
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -44,6 +47,10 @@ def top50(request):
 
 @login_required
 def change_password(request):
+    """
+    Redirects to Profile if change = success.
+    Or renders a new profile page with errors
+    """
     u_form = UpdateUserForm(instance=request.user)
 
     if request.method == 'POST':
