@@ -71,6 +71,9 @@ In order of expected implementation:
 * Adding "Home Screen" icons (Android / iOS)
 * Tests
 * CI/CD Pipeline
+* Alexa plugin
+  * Even though this goes against all my principles the first thing my friend 
+  asked was if he could add items via alexa...
 
 
 
