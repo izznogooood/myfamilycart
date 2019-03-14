@@ -20,9 +20,12 @@ shopping carts (lists) which you can add and remove items.
 If you want to know more check out the [About Page](https://myfamily.unialt.no/about)
 
 ### Contribute
-
-Clone the repo and have at it, manage.py has been altered to run settings.dev
-configuration with a SQLite database.  
+This projects main platform / framework is [Django](https://www.djangoproject.com/) 
+with a bit of plain JavaScript (ES6) and a sprinkle of [Vue.js](https://vuejs.org/) along with 
+[Bootstrap 4](https://getbootstrap.com/).  
+  
+If you are familiar with Django just clone the repo and have at it. `manage.py` has been 
+altered to run `settings.dev` configuration with a SQLite database.  
   
 Feel free to use this code for education / courses / tutorials and or what ever you want. 
 If you see something wrong or se a better solution for anything I would appreciate if you 
