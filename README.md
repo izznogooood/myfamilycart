@@ -21,6 +21,18 @@ shopping carts (lists) where you can add and remove items.
   
 If you want to know more check out the [About Page](https://myfamily.unialt.no/about)
 
+### Roadmap
+
+In order of expected implementation:
+
+* Adding "Home Screen" icons (Android / iOS)
+* Self hosted version (Docker or Snap or both)
+* Tests
+* CI/CD Pipeline
+* Alexa plugin
+  * Even though this goes against all my principles the first thing my friend 
+  asked was if he could add items via alexa...
+
 ### Contribute
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
 with a bit of plain JavaScript (ES6) and a sprinkle of [Vue.js](https://vuejs.org/) along with 
@@ -64,17 +76,5 @@ Utilizing Django to handle users / auth / login while using "normal" views as JS
   
 ![Models](doc/models.png)
   
-### Roadmap
-
-In order of expected implementation:
-
-* Adding "Home Screen" icons (Android / iOS)
-* Self hosted version (Docker or Snap or both)
-* Tests
-* CI/CD Pipeline
-* Alexa plugin
-  * Even though this goes against all my principles the first thing my friend 
-  asked was if he could add items via alexa...
-
 
 
