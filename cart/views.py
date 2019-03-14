@@ -6,6 +6,9 @@ from .models import Item, Cart
 from users.models import Word
 
 
+# ######################## User views #########################
+
+
 @login_required
 def cart_detail(request, pk):
     try:
