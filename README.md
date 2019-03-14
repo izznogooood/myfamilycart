@@ -5,7 +5,9 @@ After the reboot the site will be permanent.
 
 #### MyFamilyCart
 
-Live at: https://myfamily.unialt.no
+Live at: https://myfamily.unialt.no  
+  
+Better instructions / readme will follow shortly.
 
 
 
