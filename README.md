@@ -60,3 +60,12 @@ Utilizing Django to handle users / auth / login while using "normal" views as JS
   
 ![Models](doc/models.png)
   
+### Roadmap
+
+In order of expected implementation:
+
+* Tests
+* CI/CD Pipeline
+
+
+
