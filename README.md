@@ -1,4 +1,4 @@
-# Warning
+# ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Warning`
 This site will reset March 14 @ 23:59 CET  
 After the reboot the site will be permanent.
 
