@@ -31,30 +31,6 @@ def cart_list(request):
 # ################## JavaScript API Endpoints ##################
 
 
-# @login_required
-# def get_carts(request):
-#     query = Cart.objects.all().filter(user=request.user)
-#     carts = [{'name': _cart.name, 'id': _cart.id} for _cart in query]
-#
-#     return JsonResponse(carts, safe=False)
-#
-#
-# @login_required
-# def get_items(request, cart_id):
-#     try:
-#         items = [
-#             {'quantity': item.quantity, 'name': item.name}
-#             for item in Cart.objects.get(id=cart_id, user=request.user).items.all()
-#         ]
-#     except Cart.DoesNotExist:
-#         return HttpResponseNotFound('404')
-#
-#     if not items:
-#         return JsonResponse({'cart': 'empty'})
-#
-#     return JsonResponse(items, safe=False)
-
-
 @login_required
 def create_item(request):
     if request.method == 'POST':
