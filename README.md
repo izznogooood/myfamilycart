@@ -32,6 +32,8 @@ configuration.
 * /cart/templates/cart/cart-detail.html
    * Cart Items
    * /cart/static/cart/js/cart-detail.js <-- One page app
+   
+* /users <-- User functionality
   
 **Functionality**
 
