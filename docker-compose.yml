@@ -3,6 +3,7 @@ version: '3'
 services:
   web:
     build: .
+    restart: always
     command: sh /app/entrypoint.sh
     volumes:
       - ./staticfiles:/app/staticfiles
@@ -23,5 +24,6 @@ services:
       - db
   db:
     image: postgres:10.5-alpine
+    restart: always
     volumes:
       - ./postgres:/var/lib/postgresql/data/
