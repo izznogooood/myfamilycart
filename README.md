@@ -1,5 +1,7 @@
 <!--
 Todo: 
+ * Tests
+ * CI/CD Pipeline
  * After signing up auto login
  * Account deletion
  * Fix the empty state, https://emptystat.es/
@@ -38,8 +40,6 @@ In order of expected implementation:
 * Sharing of carts between users / familyname (shared accounts)
   * Removing the purpose of a familyname when users can share lists
 * Self hosted version (Docker or Snap or both)
-* Tests
-* CI/CD Pipeline
 * Alexa plugin
   * Even though this goes against all my principles the first thing my friend 
   asked was if he could add items via alexa...
