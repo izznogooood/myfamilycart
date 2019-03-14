@@ -12,10 +12,21 @@ Better instructions / readme will follow shortly.
 
 
 
-#### Early contribution
+#### Contribution
 
 Clone the repo and have at it, manage.py has been altered to run settings.dev
-configuration.
+configuration.  
+  
+Feel free to use this code for education / courses / tutorials and or what ever you want. 
+If you see something wrong or se a better solution for anything I would appreciate if you 
+create an issue so we (especially me) can evolve and benefit from your input.  
+  
+No issue is to small, I want your input/ideas.
+
+
+**Functionality**
+
+Utilizing Django to handle users / auth / login while using "normal" views as JS endpoints. 
 
 **Basic Overview**
 
@@ -35,6 +46,3 @@ configuration.
    
 * /users <-- User functionality
   
-**Functionality**
-
-Utilizing Django to handle users / auth / login while using "normal" views as JS endpoints. 
