@@ -17,7 +17,7 @@ Live at: https://myfamily.unialt.no (Responsive (Mobil Friendly))
 
 MyFamilyCart came to life as we / our tiny family needed a common
 place to save our shopping lists. The App lets you create different
-shopping carts (lists) which you can add and remove items.  
+shopping carts (lists) where you can add and remove items.  
   
 If you want to know more check out the [About Page](https://myfamily.unialt.no/about)
 
