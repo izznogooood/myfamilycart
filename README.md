@@ -69,6 +69,7 @@ Utilizing Django to handle users / auth / login while using "normal" views as JS
 In order of expected implementation:
 
 * Adding "Home Screen" icons (Android / iOS)
+* Self hosted version (Docker or Snap or both)
 * Tests
 * CI/CD Pipeline
 * Alexa plugin
