@@ -95,7 +95,6 @@ class API {
             .then((res) => {return res.json()})
             .then(json => {
                 if (json.success === true) {
-                    console.log('success');
                     UI.showAlert('Item removed...', 'success');
                 }
             })

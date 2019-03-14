@@ -59,7 +59,6 @@ class API {
         })
             .then(res => {return res.json()})
             .then(json => {
-                console.log(json);
                 UI.addItemToList(json);
                 UI.showAlert('Cart added...', 'success');
                 UI.clearFields();
