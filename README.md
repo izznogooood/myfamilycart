@@ -60,7 +60,7 @@ Utilizing Django to handle users / auth / login while using "normal" views as JS
    
 * /users <-- User functionality
 
-**Django Models**  
+**Django Models / Database Tables**  
   
 ![Models](doc/models.png)
   
