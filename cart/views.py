@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Item, Cart
 from users.models import Word
 
+import bleach
 
 # ######################## User views #########################
 
@@ -40,7 +41,7 @@ def create_item(request):
         data = request.POST
 
         cart_id = data['cart']
-        name = data['name'].rstrip().lstrip()
+        name = bleach.clean(data['name'].rstrip().lstrip())
         quantity = data['quantity']
         user = request.user
 
@@ -78,9 +79,9 @@ def create_item(request):
 @login_required
 def create_cart(request):
     if request.method == 'POST':
-        data = request.POST
 
-        name = data['name'].rstrip().lstrip()
+        data = request.POST
+        name = bleach.clean(data['name'].rstrip().lstrip())
         user = request.user
 
         _cart = Cart(user=user, name=name)
