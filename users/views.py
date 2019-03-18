@@ -3,8 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import auth
 
+from django.contrib.auth.models import User
 from .models import Word
+
 from .forms import RegisterForm, UpdateUserForm
 
 
@@ -42,6 +45,18 @@ def profile(request):
     p_form = PasswordChangeForm(request.user)
 
     return render(request, 'users/profile.html', {'u_form': u_form, 'p_form': p_form})
+
+
+@login_required
+def del_user(request):
+    user = User(id=request.user.id)
+    user.delete()
+
+    auth.logout(request)
+
+    messages.success(request, 'Your account has been deleted!')
+
+    return redirect('login')
 
 
 @login_required

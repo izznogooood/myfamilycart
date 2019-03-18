@@ -22,6 +22,7 @@ from users import views as user_views
 urlpatterns = [
     # path('admin/', admin.site.urls), # <-- Disabled for production
     path('register/', user_views.register, name='register'),
+    path('delete-user/', user_views.del_user, name='delete-user'),
     path('profile/', user_views.profile, name='profile'),
     path('about/', user_views.about, name='about'),
     path('top50/', user_views.top50, name='top50'),
