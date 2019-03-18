@@ -10,7 +10,6 @@ Todo:
  * Can add the same item to a list twice, which does not update the quantity but instead just adds it again
  * Adding -1 shows an error
  * Adding the same item to a list twice, which does not update the quantity but instead just adds it again
- * Not sanitising HTML correctly when an item is initially inserted (although it is done correctly on page refresh; this is likely because you've got the add-an-item code twice, once in Django and once in Vue), so if I have HTML elements in the name of an item, they are rendered as HTML
  * no way to try the app without signing up
  * verify email ? 
  * Adding "Home Screen" icons (Android / iOS)
