@@ -14,7 +14,24 @@ class Item {
 class UI {
 
     static addItemToList(item) {
-        const list = document.querySelector('#item-list');
+        const theadTemplate = `
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th width="15%">Quantity</th>
+                        <th>Item</th>
+                        <th width="15%"></th>
+                    </tr>
+                </thead>
+                <tbody id="item-list"></tbody>
+            </table>
+        `;
+        if (!document.querySelector('thead')) {
+            document.querySelector('table').innerHTML = theadTemplate;
+            document.querySelector('#empty').remove();
+        }
+
+        const tbody = document.querySelector('#item-list');
 
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -22,7 +39,7 @@ class UI {
             <td>${item.name}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-        list.appendChild(row);
+        tbody.appendChild(row);
     }
     
     static deleteItem (el) {
