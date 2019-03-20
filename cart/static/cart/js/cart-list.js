@@ -17,6 +17,9 @@ class Item {
 class UI {
 
     static addItemToList(item) {
+        const empty = document.querySelector('#empty');
+        if (empty) empty.remove();
+
         const div = document.querySelector('#cart-list');
         const url = new URL(document.URL);
 
