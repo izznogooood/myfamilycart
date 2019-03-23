@@ -5,7 +5,7 @@ const navBar = new Vue({
   data() {
     return {
       display: false,
-      cart: false
+      cart: false,
     }
   },
 
@@ -16,9 +16,11 @@ const navBar = new Vue({
   },
 
   created() {
-    // Looking for cart from hidden <p> passed in by Django
+    // Looking for cart id and shared status from hidden <p> passed in by Django
     const cart = document.querySelector('#cart-id');
-    if (cart) {this.cart = true}
+    const shared = document.querySelector('#shared');
+
+    if (cart && !shared) {this.cart = true}
     },
 });
 

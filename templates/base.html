@@ -56,6 +56,7 @@
                   <a href="{% url 'profile' %}" class="btn btn-primary btn-outline btn-block">Profile</a>
                   <a href="{% url 'about' %}" class="btn btn-primary btn-outline btn-block">About</a>
                   <a href="{% url 'logout' %}" class="btn btn-primary btn-outline btn-block">Logout</a>
+                  <button v-if="cart" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal">Share Cart</button>
                   <button v-if="cart" type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">Delete Cart</button>
               </div>
           </div>

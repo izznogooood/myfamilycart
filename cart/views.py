@@ -1,35 +1,42 @@
+import bleach
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import Item, Cart
 from users.models import Word
 
-import bleach
 
 # ######################## User views #########################
 
 
 @login_required
 def cart_detail(request, pk):
+    user_id = request.user.id
+    shared = False
+
     try:
-        cart = Cart.objects.get(id=pk, user=request.user)
+        cart = Cart.objects.get(id=pk)
     except Cart.DoesNotExist:
         return HttpResponseNotFound('404')
 
-    items = cart.items.all()
+    if user_id != cart.owner.id:
+        shared = True
+        try:
+            assert cart.shared_with.get(id=user_id).id
+        except User.DoesNotExist:
+            return HttpResponseNotFound('404')
 
-    context = {'items': items,
-               'cart': cart}
+    context = {'cart': cart, 'shared': shared}
 
     return render(request, 'cart/cart-detail.html', context)
 
 
 @login_required
 def cart_list(request):
-    context = {'carts': Cart.objects.all().filter(user=request.user)}
-
-    return render(request, 'cart/cart-list.html', context)
+    return render(request, 'cart/cart-list.html')
 
 
 # ################## JavaScript API Endpoints ##################
@@ -50,27 +57,30 @@ def create_item(request):
         except Cart.DoesNotExist:
             return HttpResponseNotFound('404')
 
-        if not user.id == cart.user.id:
-            return HttpResponseNotFound('404')
-        else:
-            item = Item(quantity=quantity, name=name, cart_id=cart_id)
-            item.save()
-
-            # Saving words for use with form autocomplete
-            c_name = name.capitalize()
+        if user.id != cart.owner.id:
             try:
-                word = Word.objects.get(user=user, name=c_name)
-            except Word.DoesNotExist:
-                word = None
+                assert cart.shared_with.get(id=user.id).id
+            except User.DoesNotExist:
+                return HttpResponseNotFound('404')
 
-            if word:
-                word.count += 1
-                word.save()
-            else:
-                word = Word(user=user, name=c_name, count=1)
-                word.save()
+        item = Item(quantity=quantity, name=name, cart_id=cart_id)
+        item.save()
 
-            return JsonResponse({'quantity': item.quantity, 'name': item.name})
+        # Saving words for use with form autocomplete
+        c_name = name.capitalize()
+        try:
+            word = Word.objects.get(user=user, name=c_name)
+        except Word.DoesNotExist:
+            word = None
+
+        if word:
+            word.count += 1
+            word.save()
+        else:
+            word = Word(user=user, name=c_name, count=1)
+            word.save()
+
+        return JsonResponse({'quantity': item.quantity, 'name': item.name})
 
     else:
         return HttpResponseNotFound('404')
@@ -84,7 +94,7 @@ def create_cart(request):
         name = bleach.clean(data['name'].rstrip().lstrip())
         user = request.user
 
-        _cart = Cart(user=user, name=name)
+        _cart = Cart(owner=user, name=name)
         _cart.save()
 
         return JsonResponse({'name': _cart.name, 'id': _cart.id, 'url': _cart.get_absolute_url()})
@@ -99,11 +109,14 @@ def delete_item(request):
 
         try:
             cart = Cart.objects.get(id=data['cart'])
-            if not request.user.id == cart.user.id:
-                return HttpResponseNotFound('404')
-
         except Cart.DoesNotExist:
             return HttpResponseNotFound('404')
+
+        if request.user.id != cart.owner.id:
+            try:
+                assert cart.shared_with.get(id=request.user.id).id
+            except User.DoesNotExist:
+                return HttpResponseNotFound('404')
 
         items = Item.objects.all().filter(name=data['name'], quantity=data['quantity'], cart_id=data['cart'])
         items.delete()
@@ -116,7 +129,7 @@ def delete_item(request):
 @login_required
 def delete_cart(request, pk):
     try:
-        _cart = Cart.objects.all().filter(id=pk, user=request.user)
+        _cart = Cart.objects.all().filter(id=pk, owner=request.user)
         _cart.delete()
 
         return redirect('cart:carts-list')
