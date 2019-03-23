@@ -3,7 +3,6 @@ Todo:
  * Tests
  * CI/CD Pipeline
  * After signing up auto login
- * Account deletion
  * Fix the empty state, https://emptystat.es/
  * Does not work without JS: https://kryogenix.org/code/browser/everyonehasjs.html
  * Delete warning vs trash function (trashed boleen)
