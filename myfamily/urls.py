@@ -18,9 +18,10 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
 
+from django.conf import settings
+
 
 urlpatterns = [
-    # path('admin/', admin.site.urls), # <-- Disabled for production
     path('register/', user_views.register, name='register'),
     path('delete-user/', user_views.del_user, name='delete-user'),
     path('profile/', user_views.profile, name='profile'),
@@ -32,3 +33,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', include('cart.urls', namespace='cart')),
 ]
+
+if settings.DEBUG:
+    urlpatterns.append(path('admin/', admin.site.urls))
