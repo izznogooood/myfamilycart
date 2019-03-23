@@ -1,8 +1,8 @@
 
-function getCookie(name) {
+const getCookie = (name) => {
     let cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return cookie ? cookie[2] : null;
-}
+};
 
 class Item {
     constructor(quantity, name) {
@@ -14,7 +14,24 @@ class Item {
 class UI {
 
     static addItemToList(item) {
-        const list = document.querySelector('#item-list');
+        const theadTemplate = `
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th width="15%">Quantity</th>
+                        <th>Item</th>
+                        <th width="15%"></th>
+                    </tr>
+                </thead>
+                <tbody id="item-list"></tbody>
+            </table>
+        `;
+        if (document.querySelector('#empty')) {
+            document.querySelector('#empty').remove();
+            document.querySelector('table').innerHTML = theadTemplate;
+        }
+
+        const tbody = document.querySelector('#item-list');
 
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -22,11 +39,24 @@ class UI {
             <td>${item.name}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-        list.appendChild(row);
+        tbody.appendChild(row);
+
     }
     
     static deleteItem (el) {
         el.parentElement.parentElement.remove();
+        const itemList = document.querySelector('#item-list');
+        if (itemList && itemList.childElementCount === 0) {
+
+            document.querySelector('thead').remove();
+            document.querySelector('tbody').remove();
+
+            const empty = document.createElement('p');
+            empty.id ='empty';
+            empty.classList.add('empty-state', 'text-center');
+            empty.innerHTML = 'Your cart is empty...';
+            document.querySelector('table').appendChild(empty);
+        }
     }
 
     static showAlert(msg, className) {
@@ -70,6 +100,7 @@ class API {
                 UI.addItemToList(json);
                 UI.showAlert('Item added...', 'success');
                 UI.clearFields();
+                buttonEventListener();
             })
             .catch(err => {
                 UI.showAlert(`Error: ${err}`, 'danger');
@@ -123,19 +154,27 @@ document.querySelector('#cart-form').addEventListener('submit', e => {
     }
 });
 
-// Remove Item
-document.querySelector('#item-list').addEventListener('click', e => {
-  if (e.target.classList.contains('delete')) {
+// Removing items
+const buttonEventListener = () => {
+    document.querySelector('#item-list').addEventListener('click', e => {
+        if (e.target.classList.contains('delete')) {
 
-    let item = {
-        quantity: e.target.parentElement.previousElementSibling.previousElementSibling.innerHTML,
-        name: e.target.parentElement.previousElementSibling.innerHTML
-    };
+            let item = {
+                quantity: e.target.parentElement.previousElementSibling.previousElementSibling.innerHTML,
+                name: e.target.parentElement.previousElementSibling.innerHTML
+            };
 
-    UI.deleteItem(e.target);
-    API.delItem(item);
-  }
-});
+        UI.deleteItem(e.target);
+        API.delItem(item);
+        }
+    });
+};
+
+// If there are items, start Event Listener
+if (document.querySelector('#item-list')) {
+    buttonEventListener()
+}
+
 
 
 

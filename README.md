@@ -1,6 +1,7 @@
 <!--
 Todo: 
  * Tests
+ * remove all CDN
  * CI/CD Pipeline
  * After signing up auto login
  * Fix the empty state, https://emptystat.es/

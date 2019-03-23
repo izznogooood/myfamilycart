@@ -5,12 +5,18 @@
 <div class="container mt-4">
     <legend class="border-bottom text-center">My Carts</legend>
     <div id="cart-list">
-        {% for cart in carts %}
+        {% if carts %}
+            {% for cart in carts %}
 
-            <a href="{{ cart.get_absolute_url }}" class="btn btn-primary btn-block mt-4 font-weight-bold">{{ cart.name }}</a>
+                <a href="{{ cart.get_absolute_url }}" class="btn btn-primary btn-block mt-4 font-weight-bold">{{ cart.name }}</a>
 
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <p id="empty" class="display-4 text-center mt-4">You have no carts yet.</p>
+        {% endif %}
+
         <!-- JS inserts here -->
+
     </div>
 
     <legend class="border-bottom text-center mt-4">Add Cart</legend>
