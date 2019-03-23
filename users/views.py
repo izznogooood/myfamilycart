@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import auth
 
@@ -19,9 +19,13 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            new_user = authenticate(request,
+                                    username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'])
+            login(request, new_user)
 
-            messages.success(request, f'Your account is ready, {form.cleaned_data.get("username")}!')
-            return redirect('login')
+            messages.success(request, f'Welcome in, {form.cleaned_data.get("username")}!')
+            return redirect('cart:carts-list')
 
     else:
         form = RegisterForm()
