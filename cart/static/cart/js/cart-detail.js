@@ -1,8 +1,8 @@
 
-function getCookie(name) {
+const getCookie = (name) => {
     let cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return cookie ? cookie[2] : null;
-}
+};
 
 class Item {
     constructor(quantity, name) {
@@ -26,9 +26,9 @@ class UI {
                 <tbody id="item-list"></tbody>
             </table>
         `;
-        if (!document.querySelector('thead')) {
-            document.querySelector('table').innerHTML = theadTemplate;
+        if (document.querySelector('#empty')) {
             document.querySelector('#empty').remove();
+            document.querySelector('table').innerHTML = theadTemplate;
         }
 
         const tbody = document.querySelector('#item-list');
@@ -40,10 +40,23 @@ class UI {
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
         tbody.appendChild(row);
+
     }
     
     static deleteItem (el) {
         el.parentElement.parentElement.remove();
+        const itemList = document.querySelector('#item-list');
+        if (itemList && itemList.childElementCount === 0) {
+
+            document.querySelector('thead').remove();
+            document.querySelector('tbody').remove();
+
+            const empty = document.createElement('p');
+            empty.id ='empty';
+            empty.classList.add('empty-state', 'text-center');
+            empty.innerHTML = 'Your cart is empty...';
+            document.querySelector('table').appendChild(empty);
+        }
     }
 
     static showAlert(msg, className) {
@@ -87,6 +100,7 @@ class API {
                 UI.addItemToList(json);
                 UI.showAlert('Item added...', 'success');
                 UI.clearFields();
+                buttonEventListener();
             })
             .catch(err => {
                 UI.showAlert(`Error: ${err}`, 'danger');
@@ -140,19 +154,27 @@ document.querySelector('#cart-form').addEventListener('submit', e => {
     }
 });
 
-// Remove Item
-document.querySelector('#item-list').addEventListener('click', e => {
-  if (e.target.classList.contains('delete')) {
+// Removing items
+const buttonEventListener = () => {
+    document.querySelector('#item-list').addEventListener('click', e => {
+        if (e.target.classList.contains('delete')) {
 
-    let item = {
-        quantity: e.target.parentElement.previousElementSibling.previousElementSibling.innerHTML,
-        name: e.target.parentElement.previousElementSibling.innerHTML
-    };
+            let item = {
+                quantity: e.target.parentElement.previousElementSibling.previousElementSibling.innerHTML,
+                name: e.target.parentElement.previousElementSibling.innerHTML
+            };
 
-    UI.deleteItem(e.target);
-    API.delItem(item);
-  }
-});
+        UI.deleteItem(e.target);
+        API.delItem(item);
+        }
+    });
+};
+
+// If there are items, start Event Listener
+if (document.querySelector('#item-list')) {
+    buttonEventListener()
+}
+
 
 
 

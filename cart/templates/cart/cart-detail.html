@@ -41,14 +41,16 @@
                 <tr>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.name }}</td>
-                    <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+                    <td>
+                        <a href="#" class="btn btn-danger btn-sm delete">X</a>
+                    </td>
                 </tr>
             {% endfor %}
 
         </tbody>
 
     {% else %}
-        <p id="empty" class="display-4 text-center mt-4">Your cart is empty.</p>
+        <p id="empty" class="empty-state text-center mt-4">Your cart is empty...</p>
     {% endif %}
     </table>
 
