@@ -5,10 +5,13 @@
     <div class="container mt-4 text-center">
         <legend class="border-bottom mt-4">Your Top 50 Items</legend>
             <ul class="list-unstyled">
-
-                {% for word in user.words.all|slice:":50" %}
-                    <li> {{ word.count }} {{ word.name }}</li>
-                {% endfor %}
+                {% if user.words.all %}
+                    {% for word in user.words.all|slice:":50" %}
+                        <li> {{ word.count }} {{ word.name }}</li>
+                    {% endfor %}
+                {% else %}
+                    <legend class="mt-4">You have not entered any items yet...</legend>
+                {% endif %}
 
             </ul>
         <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
