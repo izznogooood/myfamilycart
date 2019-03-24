@@ -9,9 +9,7 @@ Todo:
  * Delete warning vs trash function (trashed boleen)
  * Can add the same item to a list twice, which does not update the quantity but instead just adds it again
  * Adding -1 shows an error
- * Adding the same item to a list twice, which does not update the quantity but instead just adds it again
  * no way to try the app without signing up
- * verify email ? 
  * Adding "Home Screen" icons (Android / iOS)
 -->
 

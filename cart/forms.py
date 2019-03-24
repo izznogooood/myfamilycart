@@ -7,12 +7,10 @@ class ShareCartForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(ShareCartForm, self).clean()
-        username = cleaned_data.get('username')
-        email = cleaned_data.get('email')
 
-        if not username or not email:
+        if not cleaned_data.get('username') and not cleaned_data.get('email'):
             raise forms.ValidationError('Please fill in one of the fields.')
-        if username and email:
+        if cleaned_data.get('username') and cleaned_data.get('email'):
             raise forms.ValidationError('Please only use one of the options.')
 
         return cleaned_data

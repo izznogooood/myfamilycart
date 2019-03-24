@@ -16,10 +16,16 @@
 
 
     </div>
-{% endblock content %}
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    // Inserting text between the fields of the Django Form. ( OR )
 
+    document.addEventListener('DOMContentLoaded', () => {
+      const legend = document.createElement('legend');
+      legend.innerHTML = '&#11014; OR &#11015;';
+      legend.classList.add('mt-4', 'display-4');
+
+      document.querySelector('#id_username').parentElement.append(legend);
     })
 </script>
+{% endblock content %}

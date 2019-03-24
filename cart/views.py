@@ -2,6 +2,7 @@ import bleach
 
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponseNotFound
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -112,8 +113,18 @@ def share_cart(request, pk):
     if request.method == 'POST':
         form = ShareCartForm(request.POST)
 
-    return render(request, 'cart/share-cart.html', {'form': form,
-                                                    'cart': cart})
+        if form.is_valid():
+            username = form.cleaned_data.get('username', None)
+            email = form.cleaned_data.get('email', None)
+
+            if username:
+                try:
+                    user = User.objects.get(username=username)
+                except User.DoesNotExist:
+                    messages.warning(request, 'Username does not exist!')
+                    return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
+
+    return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
 
 
 @login_required
