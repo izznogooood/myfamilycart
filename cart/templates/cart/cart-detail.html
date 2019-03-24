@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{#passing hidden variables to Vue for menu controll#}
 {% block content %}
-<p id="cart-id" hidden>{{ cart.id }}</p>
 
+{#passing hidden variables to Vue for menu controll#}
+<p id="cart-id" hidden>{{ cart.id }}</p>
 {% if shared %}
     <p id="shared" hidden></p>
 {% endif %}
