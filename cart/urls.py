@@ -16,5 +16,6 @@ urlpatterns = [
 
     # Views
     path('cart/<int:pk>', user_views.cart_detail, name='cart'),
+    path('cart/<int:pk>/share', user_views.share_cart, name='share-cart'),
     path('', user_views.cart_list, name='carts-list'),
 ]

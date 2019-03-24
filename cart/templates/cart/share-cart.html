@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container mt-4 text-center">
+        <legend class="border-bottom">Share "{{ cart.name }}"</legend>
+
+        <form class="form-group" method="post" action="{% url 'cart:share-cart' cart.id %}">
+            {% csrf_token %}
+
+            <!-- Crispy Forms-->
+            {{ form|crispy }}
+
+            <input type="submit" class="btn btn-primary btn-block" value="Share!">
+        </form>
+
+
+    </div>
+{% endblock content %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+    })
+</script>

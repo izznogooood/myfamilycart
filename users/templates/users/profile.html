@@ -6,12 +6,14 @@
         <legend class="border-bottom mt-4">Change Profile Info</legend>
         <form method="post" action="{% url 'profile' %}" class="form-group mt-4">
             {% csrf_token %}
+            <!-- Crispy Forms-->
             {{ u_form|crispy }}
             <input class="btn btn-primary btn-block" type="submit" value="Update User Info">
         </form>
         <legend class="border-bottom mt-5">Change Password</legend>
         <form method="post" action="{% url 'change-password' %}" class="form-group">
             {% csrf_token %}
+            <!-- Crispy Forms-->
             {{ p_form|crispy }}
             <input class="btn btn-primary btn-block" type="submit" value="Update Password">
         </form>

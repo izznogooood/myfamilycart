@@ -5,6 +5,8 @@ from django.http import JsonResponse, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from .forms import ShareCartForm
+
 from .models import Item, Cart
 from users.models import Word
 
@@ -100,6 +102,18 @@ def create_cart(request):
         return JsonResponse({'name': _cart.name, 'id': _cart.id, 'url': _cart.get_absolute_url()})
     else:
         return HttpResponseNotFound('404')
+
+
+@login_required
+def share_cart(request, pk):
+    form = ShareCartForm()
+    cart = Cart.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = ShareCartForm(request.POST)
+
+    return render(request, 'cart/share-cart.html', {'form': form,
+                                                    'cart': cart})
 
 
 @login_required
