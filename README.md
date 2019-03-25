@@ -1,5 +1,6 @@
 <!--
 Todo: 
+ * IMPLEMENT YARN, get rid of CDNs!!!
  * Tests
  * remove all CDN
  * CI/CD Pipeline

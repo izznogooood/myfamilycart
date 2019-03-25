@@ -109,6 +109,7 @@ def create_cart(request):
 def share_cart(request, pk):
     form = ShareCartForm()
     cart = Cart.objects.get(id=pk)
+    user = None
 
     if request.method == 'POST':
         form = ShareCartForm(request.POST)
@@ -120,9 +121,25 @@ def share_cart(request, pk):
             if username:
                 try:
                     user = User.objects.get(username=username)
+
                 except User.DoesNotExist:
                     messages.warning(request, 'Username does not exist!')
-                    return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
+
+            else:
+                try:
+                    user = User.objects.get(email=email)
+
+                except User.DoesNotExist:
+                    messages.warning(request, 'Email does not exist!')
+
+        if user.id == request.user.id:
+            messages.warning(request, 'You dont need to share carts with your self.')
+            return redirect('cart:cart', pk=cart.id)
+
+        cart.shared_with.add(user)
+        messages.success(request, "You've shared your cart!")
+
+        return redirect('cart:cart', pk=cart.id)
 
     return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
 
