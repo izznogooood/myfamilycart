@@ -12,7 +12,7 @@ services:
     ports:
       - 8000:8000
     environment:
-      - DJANGO_SETTINGS_MODULE=myfamily.settings.pro # <-- Secrets :)
+      - DJANGO_SETTINGS_MODULE=myfamily.settings.pro
       - SQL_ENGINE=django.db.backends.postgresql
       - SQL_DATABASE=postgres
       - SQL_USER=postgres

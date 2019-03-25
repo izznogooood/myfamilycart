@@ -5,27 +5,38 @@
     <div class="container mt-4 text-center">
         <legend class="border-bottom">Share "{{ cart.name }}"</legend>
 
-        <form class="form-group" method="post" action="{% url 'cart:share-cart' cart.id %}">
+        <form name="share" class="form-group" method="post" action="{% url 'cart:share-cart' cart.id %}">
             {% csrf_token %}
 
             <!-- Crispy Forms-->
             {{ form|crispy }}
-
-            <input type="submit" class="btn btn-primary btn-block" value="Share!">
+            <div id="submit">
+                <input type="submit" class="btn btn-primary btn-block" value="Share!">
+            </div>
         </form>
 
 
     </div>
 
 <script>
-    // Inserting text between the fields of the Django Form. ( OR )
-
     document.addEventListener('DOMContentLoaded', () => {
+
+      // Inserting text between the fields of the Django Form. ( OR )
       const legend = document.createElement('legend');
       legend.innerHTML = '&#11014; OR &#11015;';
       legend.classList.add('mt-4', 'display-4');
-
       document.querySelector('#id_username').parentElement.append(legend);
+
+      // todo: add async mail method
+      // Load spinner when sending email
+      document.querySelector('#submit').addEventListener('click', function() {
+        const spinner = `
+        <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+        </div>`;
+        this.innerHTML = spinner;
+        document.share.submit();
+      })
     })
 </script>
 {% endblock content %}
