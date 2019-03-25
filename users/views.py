@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import auth
+from django.core.mail import send_mail
 
 from django.contrib.auth.models import User
 from .models import Word

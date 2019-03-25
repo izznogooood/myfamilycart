@@ -5,6 +5,8 @@ from django.http import JsonResponse, HttpResponseNotFound
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
 
 from .forms import ShareCartForm
 
@@ -121,25 +123,39 @@ def share_cart(request, pk):
             if username:
                 try:
                     user = User.objects.get(username=username)
-
                 except User.DoesNotExist:
                     messages.warning(request, 'Username does not exist!')
 
             else:
                 try:
                     user = User.objects.get(email=email)
-
                 except User.DoesNotExist:
                     messages.warning(request, 'Email does not exist!')
 
-        if user.id == request.user.id:
-            messages.warning(request, 'You dont need to share carts with your self.')
-            return redirect('cart:cart', pk=cart.id)
+            if user == request.user:
+                messages.warning(request, 'Schizophrenia Warning, consider seeing a doctor.')
+                return redirect('cart:cart', pk=cart.id)
 
-        cart.shared_with.add(user)
-        messages.success(request, "You've shared your cart!")
+            if user:
+                subject = f'MyFamily: {request.user.username} shared a cart with you.'
+                to = [request.user.email]
+                #  todo: maybe change this to a dynamic value.
+                from_email = 'myfamily@unialt.no'
+                uri = request.META['HTTP_HOST']
+                context = {
+                    'username': user.username,
+                    'sender': request.user.username,
+                    'uri': uri
+                }
+                message = get_template('cart/email-share.html').render(context)
+                msg = EmailMessage(subject, message, to=to, from_email=from_email)
+                msg.content_subtype = 'html'
+                msg.send()
 
-        return redirect('cart:cart', pk=cart.id)
+                cart.shared_with.add(user)
+                messages.success(request, "User notified, you've shared your cart!")
+
+                return redirect('cart:cart', pk=cart.id)
 
     return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
 
