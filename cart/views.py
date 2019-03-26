@@ -44,6 +44,58 @@ def cart_list(request):
     return render(request, 'cart/cart-list.html')
 
 
+@login_required
+def share_cart(request, pk):
+    form = ShareCartForm()
+    cart = Cart.objects.get(id=pk)
+    user = None
+
+    if request.method == 'POST':
+        form = ShareCartForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get('username', None)
+            email = form.cleaned_data.get('email', None)
+
+            if username:
+                try:
+                    user = User.objects.get(username=username)
+                except User.DoesNotExist:
+                    messages.warning(request, 'Username does not exist!')
+
+            else:
+                try:
+                    user = User.objects.get(email=email)
+                except User.DoesNotExist:
+                    messages.warning(request, 'Email does not exist!')
+
+            if user == request.user:
+                messages.warning(request, 'Schizophrenia Warning, consider seeing a doctor.')
+                return redirect('cart:cart', pk=cart.id)
+
+            if user:
+                subject = f'MyFamily: {request.user.username} shared a cart with you.'
+                to = [user.email]
+                #  todo: maybe change this to a dynamic value.
+                from_email = 'myfamily@unialt.no'
+                uri = request.META['HTTP_HOST']
+                context = {
+                    'username': user.username,
+                    'sender': request.user.username
+                }
+                message = get_template('cart/email-share.html').render(context)
+                msg = EmailMessage(subject, message, to=to, from_email=from_email)
+                msg.content_subtype = 'html'
+                msg.send()
+
+                cart.shared_with.add(user)
+                messages.success(request, "User notified, you've shared your cart!")
+
+                return redirect('cart:cart', pk=cart.id)
+
+    return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
+
+
 # ################## JavaScript API Endpoints ##################
 
 
@@ -105,58 +157,6 @@ def create_cart(request):
         return JsonResponse({'name': _cart.name, 'id': _cart.id, 'url': _cart.get_absolute_url()})
     else:
         return HttpResponseNotFound('404')
-
-
-@login_required
-def share_cart(request, pk):
-    form = ShareCartForm()
-    cart = Cart.objects.get(id=pk)
-    user = None
-
-    if request.method == 'POST':
-        form = ShareCartForm(request.POST)
-
-        if form.is_valid():
-            username = form.cleaned_data.get('username', None)
-            email = form.cleaned_data.get('email', None)
-
-            if username:
-                try:
-                    user = User.objects.get(username=username)
-                except User.DoesNotExist:
-                    messages.warning(request, 'Username does not exist!')
-
-            else:
-                try:
-                    user = User.objects.get(email=email)
-                except User.DoesNotExist:
-                    messages.warning(request, 'Email does not exist!')
-
-            if user == request.user:
-                messages.warning(request, 'Schizophrenia Warning, consider seeing a doctor.')
-                return redirect('cart:cart', pk=cart.id)
-
-            if user:
-                subject = f'MyFamily: {request.user.username} shared a cart with you.'
-                to = [user.email]
-                #  todo: maybe change this to a dynamic value.
-                from_email = 'myfamily@unialt.no'
-                uri = request.META['HTTP_HOST']
-                context = {
-                    'username': user.username,
-                    'sender': request.user.username
-                }
-                message = get_template('cart/email-share.html').render(context)
-                msg = EmailMessage(subject, message, to=to, from_email=from_email)
-                msg.content_subtype = 'html'
-                msg.send()
-
-                cart.shared_with.add(user)
-                messages.success(request, "User notified, you've shared your cart!")
-
-                return redirect('cart:cart', pk=cart.id)
-
-    return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
 
 
 @login_required
