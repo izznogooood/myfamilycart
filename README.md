@@ -25,8 +25,12 @@ Live at: https://myfamily.unialt.no (Responsive (Mobile Friendly))
 ### About
 
 MyFamilyCart came to life as we / our tiny family needed a common
-place to save our shopping lists. The App lets you create different
+place to save and share our shopping lists. The App lets you create different
 shopping carts (lists) where you can add and remove items.  
+
+Key features:
+ * Shopping lists
+ * Share lists with other users
   
 If you want to know more check out the [About Page](https://myfamily.unialt.no/about)
 
@@ -35,8 +39,6 @@ Be aware that this app is in active development.
 
 In order of expected implementation:
 
-* Sharing of carts between users / familyname (shared accounts)
-  * Removing the purpose of a familyname when users can share lists
 * Self hosted version (Docker or Snap or both)
 * Alexa plugin
   * Even though this goes against all my principles the first thing my friend 
