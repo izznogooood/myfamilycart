@@ -144,8 +144,7 @@ def share_cart(request, pk):
                 uri = request.META['HTTP_HOST']
                 context = {
                     'username': user.username,
-                    'sender': request.user.username,
-                    'uri': uri
+                    'sender': request.user.username
                 }
                 message = get_template('cart/email-share.html').render(context)
                 msg = EmailMessage(subject, message, to=to, from_email=from_email)
