@@ -55,10 +55,10 @@
               <div class="col"></div>
               <div class="col-sm-4"></div>
               <div class="col text-right mb-4">
-                  <a href="{% url 'cart:carts-list' %}" class="btn btn-primary btn-block">My Carts</a>
-                  <a href="{% url 'top50' %}" class="btn btn-primary btn-block">Top 50 Items</a>
-                  <a href="{% url 'profile' %}" class="btn btn-primary btn-block">Profile</a>
-                  <a href="{% url 'about' %}" class="btn btn-primary btn-block">About</a>
+                  <a href="{% url 'cart:carts-list' %}" class="btn btn-info btn-block">My Carts</a>
+                  <a href="{% url 'top50' %}" class="btn btn-secondary btn-block">Top 50 Items</a>
+                  <a href="{% url 'profile' %}" class="btn btn-secondary btn-block">Profile</a>
+                  <a href="{% url 'about' %}" class="btn btn-secondary btn-block">About</a>
                   <a href="{% url 'logout' %}" class="btn btn-primary btn-block">Logout</a>
 
                   {# This could be done by django since we are sending hidden <p> elements to the cart-detail template anyway #}
