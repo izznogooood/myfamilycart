@@ -5,6 +5,11 @@
 {% block content %}
     <div class="container mt-4 text-center">
         <legend class="border-bottom">Share "{{ cart.name }}"</legend>
+        <p class="text-center text-muted mt-4">
+            Share by entering the username or email of the person you want to share your cart with.
+            <br>
+            (It has to be a registered user)
+        </p>
 
         <form name="share" class="form-group" method="post" action="{% url 'cart:share-cart' cart.id %}">
             {% csrf_token %}
