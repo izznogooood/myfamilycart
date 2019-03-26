@@ -10,7 +10,9 @@
                         <li> {{ word.count }} {{ word.name }}</li>
                     {% endfor %}
                 {% else %}
-                    <legend class="mt-4">You have not entered any items yet...</legend>
+                    <p id="empty" class="empty-state text-center mt-4">
+                    As you add Items to your carts they will sum up here...
+                    </p>
                 {% endif %}
 
             </ul>
