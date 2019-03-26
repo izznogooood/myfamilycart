@@ -39,8 +39,7 @@ class UI {
             <td>${item.name}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-        tbody.appendChild(row);
-
+        tbody.insertBefore(row, tbody.firstChild);
     }
     
     static deleteItem (el) {
@@ -98,7 +97,6 @@ class API {
             .then(res => {return res.json()})
             .then(json => {
                 UI.addItemToList(json);
-                UI.showAlert('Item added...', 'success');
                 UI.clearFields();
                 buttonEventListener();
             })
@@ -123,12 +121,6 @@ class API {
             },
             body: data
         })
-            .then((res) => {return res.json()})
-            .then(json => {
-                if (json.success === true) {
-                    UI.showAlert('Item removed...', 'success');
-                }
-            })
             .catch(err => {
                 UI.showAlert(`Error: ${err}`, 'danger');
                 console.log(err)

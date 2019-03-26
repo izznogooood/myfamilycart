@@ -1,5 +1,12 @@
 <!--
 Todo: 
+
+Make Carts easier to spot / Color?
+Insert items on top
+remove or arrows
+
+
+
  * IMPLEMENT YARN, get rid of CDNs!!!
  * Tests
  * remove all CDN
