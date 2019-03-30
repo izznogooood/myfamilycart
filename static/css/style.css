@@ -3,16 +3,12 @@
     display: none;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 .container {
     max-width: 600px;
+}
+
+a, a:hover {
+  text-decoration: none;
 }
 
 .empty-state {

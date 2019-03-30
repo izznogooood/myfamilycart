@@ -24,7 +24,7 @@ class UI {
         const url = new URL(document.URL);
 
         const aButton = document.createElement('a');
-        aButton.classList.add('btn', 'btn-primary', 'btn-block', 'mt-4', 'font-weight-bold');
+        aButton.classList.add('btn', 'btn-info', 'btn-block', 'mt-4', 'font-weight-bold');
         aButton.href = url.origin + item.url;
         aButton.innerHTML = item.name;
 
