@@ -61,7 +61,7 @@
                   <a href="{% url 'about' %}" class="btn btn-secondary btn-block">About</a>
                   <a href="{% url 'logout' %}" class="btn btn-primary btn-block">Logout</a>
 
-                  {# This could be done by django since we are sending hidden <p> elements to the cart-detail template anyway #}
+                  {# This could be done by django, instead we are sending hidden <p> elements to the cart-detail template #}
                   {# The plan is to implent more Vue down the line #}
 
                   {# Using default value on url to prevent crash when not on a cart view #}
@@ -83,8 +83,10 @@
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-    <!-- MyFamilyCart -->
+    <!-- Vue.js -->
     <script src="{% static 'js/vue.min.js' %}"></script>
+
+    <!-- MyFamilyCart -->
     <script src="{% static 'js/global.js' %}"></script>
     <script src="{% static 'js/VueNavbar.js' %}"></script>
 </body>
