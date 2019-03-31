@@ -26,6 +26,7 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('about/', user_views.about, name='about'),
     path('top50/', user_views.top50, name='top50'),
+    path('top50/delete/<int:pk>', user_views.delete_word_item, name='delete-word-item'),
     path('password/', user_views.change_password, name='change-password'),
     path('delete-all-words/', user_views.delete_words, name='delete-all-words'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),

@@ -1,4 +1,3 @@
-
 const getCookie = (name) => {
     let cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return cookie ? cookie[2] : null;
@@ -41,8 +40,8 @@ class UI {
         `;
         tbody.insertBefore(row, tbody.firstChild);
     }
-    
-    static deleteItem (el) {
+
+    static deleteItem(el) {
         el.parentElement.parentElement.remove();
         const itemList = document.querySelector('#item-list');
         if (itemList && itemList.childElementCount === 0) {
@@ -51,7 +50,7 @@ class UI {
             document.querySelector('tbody').remove();
 
             const empty = document.createElement('p');
-            empty.id ='empty';
+            empty.id = 'empty';
             empty.classList.add('empty-state', 'text-center');
             empty.innerHTML = 'Your cart is empty...';
             document.querySelector('table').appendChild(empty);
@@ -88,13 +87,15 @@ class API {
 
 
         fetch('../api/items/create', {
-            method: 'post',
-            headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-            },
-            body: data
-        })
-            .then(res => {return res.json()})
+                method: 'post',
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken"),
+                },
+                body: data
+            })
+            .then(res => {
+                return res.json()
+            })
             .then(json => {
                 UI.addItemToList(json);
                 UI.clearFields();
@@ -115,12 +116,12 @@ class API {
         data.append('cart', cartNumber);
 
         fetch('../api/items/delete', {
-            method: 'post',
-            headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-            },
-            body: data
-        })
+                method: 'post',
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken"),
+                },
+                body: data
+            })
             .catch(err => {
                 UI.showAlert(`Error: ${err}`, 'danger');
                 console.log(err)
@@ -138,17 +139,20 @@ document.querySelector('#cart-form').addEventListener('submit', e => {
     if (!name) {
         UI.showAlert('Please enter an item...!', 'danger')
     } else {
-        if (!quantity) {quantity = 1}
+        if (!quantity) {
+            quantity = 1
+        }
         const item = new Item(quantity, name);
 
         API.createItem(item);
-        
+
     }
 });
 
 // Removing items
 const buttonEventListener = () => {
     document.querySelector('#item-list').addEventListener('click', e => {
+        e.preventDefault()
         if (e.target.classList.contains('delete')) {
 
             let item = {
@@ -156,8 +160,8 @@ const buttonEventListener = () => {
                 name: e.target.parentElement.previousElementSibling.innerHTML
             };
 
-        UI.deleteItem(e.target);
-        API.delItem(item);
+            UI.deleteItem(e.target);
+            API.delItem(item);
         }
     });
 };
@@ -166,7 +170,3 @@ const buttonEventListener = () => {
 if (document.querySelector('#item-list')) {
     buttonEventListener()
 }
-
-
-
-

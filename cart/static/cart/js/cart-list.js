@@ -1,4 +1,3 @@
-
 function getCookie(name) {
 
     let cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -30,7 +29,7 @@ class UI {
 
         div.appendChild(aButton);
     }
-    
+
     static showAlert(msg, className) {
         const div = document.createElement('div');
         div.className = `alert alert-${className}`;
@@ -54,13 +53,15 @@ class API {
         data.append('name', item.name);
 
         fetch('api/carts/create', {
-            method: 'post',
-            headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-            },
-            body: data
-        })
-            .then(res => {return res.json()})
+                method: 'post',
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken"),
+                },
+                body: data
+            })
+            .then(res => {
+                return res.json()
+            })
             .then(json => {
                 UI.addItemToList(json);
                 UI.showAlert('Cart added...', 'success');
@@ -86,9 +87,5 @@ document.querySelector('#cart-form').addEventListener('submit', e => {
     const item = new Item(name);
 
     API.createItem(item);
-        
+
 });
-
-
-
-

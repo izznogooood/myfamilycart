@@ -1,10 +1,10 @@
+from django.http import HttpResponseNotFound, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import auth
-from django.core.mail import send_mail
 
 from django.contrib.auth.models import User
 from .models import Word
@@ -91,6 +91,9 @@ def change_password(request):
     return render(request, 'users/profile.html', {'p_form': p_form, 'u_form': u_form})
 
 
+# ######################## API / USER Endpoints #########################
+
+
 @login_required
 def delete_words(request):
     user = request.user
@@ -99,5 +102,19 @@ def delete_words(request):
     words.delete()
 
     return redirect('top50')
+
+
+@login_required
+def delete_word_item(request, pk):
+    try:
+        item = Word.objects.get(id=pk, user=request.user)
+        item.delete()
+
+        return JsonResponse({'success': 'true'})
+
+    except Word.DoesNotExist:
+        return HttpResponseNotFound('404')
+
+
 
 

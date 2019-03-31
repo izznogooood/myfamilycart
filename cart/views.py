@@ -186,8 +186,8 @@ def delete_item(request):
 @login_required
 def delete_cart(request, pk):
     try:
-        _cart = Cart.objects.all().filter(id=pk, owner=request.user)
-        _cart.delete()
+        cart = Cart.objects.all().filter(id=pk, owner=request.user)
+        cart.delete()
 
         return redirect('cart:carts-list')
 

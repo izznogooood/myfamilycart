@@ -1,14 +1,35 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
     <div class="container mt-4 text-center">
-        <legend class="border-bottom mt-4">Your Top 50 Items</legend>
+        <legend class="mt-4">Your Top 50 Items</legend>
             <ul class="list-unstyled">
                 {% if user.words.all %}
-                    {% for word in user.words.all|slice:":50" %}
-                        <li> {{ word.count }} {{ word.name }}</li>
-                    {% endfor %}
+                    <table id="item-list" class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th hidden></th>
+                                <th width="15%">#</th>
+                                <th>Item</th>
+                                <th width="15%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for word in user.words.all|slice:":50" %}
+{#                        <li> {{ word.count }} {{ word.name }}</li>#}
+                            <tr>
+                                <td hidden>{{ word.id }}</td>
+                                <td>{{ word.count }}</td>
+                                <td>{{ word.name }}</td>
+                                <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
                 {% else %}
                     <p id="empty" class="empty-state text-center mt-4">
                     As you add Items to your carts they will sum up here...
@@ -49,4 +70,5 @@
         <!-- Modal end -->
 
     </div>
+    <script src="{% static 'users/js/top50.js' %}"></script>
 {% endblock content %}
