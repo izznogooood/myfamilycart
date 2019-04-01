@@ -1,4 +1,15 @@
 
+const showAlert = (msg, className) => {
+        const div = document.createElement('div');
+        div.className = `alert alert-${className} text-center`;
+        div.appendChild(document.createTextNode(msg));
+
+        const nav = document.querySelector('#nav');
+        nav.append(div);
+
+        setTimeout(() => document.querySelector('.alert').remove(), 3000)
+    };
+
 class Item {
     constructor(id, element) {
         this.id = id;
@@ -7,7 +18,6 @@ class Item {
     removeElement() {
         this.element.remove()
     }
-
 }
 
 class API {
@@ -28,34 +38,24 @@ class API {
     }
 }
 
-const showAlert = (msg, className) => {
-        const div = document.createElement('div');
-        div.className = `alert alert-${className} text-center`;
-        div.appendChild(document.createTextNode(msg));
-
-        const nav = document.querySelector('#nav');
-        nav.append(div);
-
-        setTimeout(() => document.querySelector('.alert').remove(), 3000)
-    };
-
+// Look for list, then start listener for deleting single words from db.
 document.addEventListener('DOMContentLoaded', () => {
-    const itemList = document.querySelector('#item-list');
-
+    const itemList /** @type {HTMLCanvasElement} */ = document.querySelector('#item-list');
     if (itemList) {
         itemList.addEventListener('click', (e) => {
-        e.preventDefault()
-        const target /** @type {HTMLCanvasElement} */ = e.target;
-        const itemID = target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
-        const tableRowElement = target.parentElement.parentElement;
+            e.preventDefault();
 
-        const item = new Item(itemID, tableRowElement);
+            const target /** @type {HTMLCanvasElement} */ = e.target;
 
-        API.rmItem(item);
-    })
-}
+            if (target.classList.contains('delete')) {
+                const itemID = target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
+                const tableRowElement = target.parentElement.parentElement;
 
+                const item = new Item(itemID, tableRowElement);
 
-
+                API.rmItem(item);
+            }
+        })
+    }
 });
 

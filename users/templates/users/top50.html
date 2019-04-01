@@ -7,7 +7,7 @@
         <legend class="mt-4">Your Top 50 Items</legend>
             <ul class="list-unstyled">
                 {% if user.words.all %}
-                    <table id="item-list" class="table table-striped mt-4">
+                    <table class="table table-striped mt-4">
                         <thead>
                             <tr>
                                 <th hidden></th>
@@ -16,7 +16,7 @@
                                 <th width="15%"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="item-list">
 
                             {% for word in user.words.all|slice:":50" %}
 {#                        <li> {{ word.count }} {{ word.name }}</li>#}

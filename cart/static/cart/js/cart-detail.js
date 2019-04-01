@@ -152,7 +152,7 @@ document.querySelector('#cart-form').addEventListener('submit', e => {
 // Removing items
 const buttonEventListener = () => {
     document.querySelector('#item-list').addEventListener('click', e => {
-        e.preventDefault()
+        e.preventDefault();
         if (e.target.classList.contains('delete')) {
 
             let item = {
