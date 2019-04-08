@@ -48,6 +48,9 @@ edits of items and more. Please add issues for wishes.
 The work has started and I will add a link to the repo as soon as the foundation is made.
 
 ### Contribute
+As I mention above, work on a new platform has started. But you are welcome to correct bugs
+and contribute ideas.
+
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
 with a bit of plain JavaScript (ES6) and a sprinkle of [Vue.js](https://vuejs.org/) along with 
 [Bootstrap 4](https://getbootstrap.com/).  
