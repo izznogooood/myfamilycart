@@ -38,15 +38,14 @@ Key features:
 If you want to know more check out the [About Page](https://myfamily.unialt.no/about)
 
 ### Roadmap
-Be aware that this app is in active development.
 
-In order of expected implementation:
+The app is working well and we ended up using it more than I thought so the plan
+is to re-write the app in Node.js with GraphQL, socket.io and Vue.js.
 
-* Self hosted version (Docker or Snap or both)
-* Alexa plugin
-  * Even though this goes against all my principles the first thing my friend 
-  asked was if he could add items via alexa...
-* Greater separation between the Desktop site and Mobile Site
+This will make a more responsive app with more realtime features and allow for realtime
+edits of items and more. Please add issues for wishes.
+
+The work has started and I will add a link to the repo as soon as the foundation is made.
 
 ### Contribute
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
