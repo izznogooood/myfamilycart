@@ -20,8 +20,7 @@ remove or arrows
 
 ## MyFamilyCart
 
-![Models](doc/cart-list.png)
-![Models](doc/cart-items.png)
+![Models](doc/demo.png)
 
 
 Live at: https://myfamily.unialt.no (Responsive (Mobile Friendly))
