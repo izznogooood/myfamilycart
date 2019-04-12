@@ -6,6 +6,7 @@
     <div class="container mt-4 text-center">
         <legend class="mt-4">Your Top 50 Items</legend>
             <ul class="list-unstyled">
+                
                 {% if user.words.all %}
                     <table class="table table-striped mt-4">
                         <thead>
@@ -19,7 +20,6 @@
                         <tbody id="item-list">
 
                             {% for word in user.words.all|slice:":50" %}
-{#                        <li> {{ word.count }} {{ word.name }}</li>#}
                             <tr>
                                 <td hidden>{{ word.id }}</td>
                                 <td>{{ word.count }}</td>
@@ -30,6 +30,7 @@
 
                         </tbody>
                     </table>
+               
                 {% else %}
                     <p id="empty" class="empty-state text-center mt-4">
                     As you add Items to your carts they will sum up here...
