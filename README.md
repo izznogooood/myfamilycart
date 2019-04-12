@@ -55,7 +55,7 @@ Planned features:
 The work has started and I will add a link to the repo as soon as the foundation is made.
 
 ### Contribute
-As I mention above, work on a new platform has started. But you are welcome to correct bugs
+As I mentioned above, work on a new platform has started. But you are welcome to correct bugs
 and contribute ideas.
 
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
@@ -82,7 +82,7 @@ to read the code.*
 Utilizing Django to handle users / auth / login / backend tasks while JS onePage
 apps take advantage of "normal" views as JS endpoints. 
 
-**Basic Overview**
+**Very Basic Overview**
 
 * /templates/base.html
   * FontAwsome
