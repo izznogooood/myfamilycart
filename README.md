@@ -12,10 +12,9 @@ remove or arrows
  * Fix the empty state, https://emptystat.es/
  * Does not work without JS: https://kryogenix.org/code/browser/everyonehasjs.html
  * Delete warning vs trash function (trashed boleen)
- * Can add the same item to a list twice, which does not update the quantity but instead just adds it again
+ * Can add the same item to a list twice, does not update the quantity but instead just adds it again
  * Adding -1 shows an error
  * no way to try the app without signing up
- * Adding "Home Screen" icons (Android / iOS)
 -->
 
 ## MyFamilyCart
@@ -27,7 +26,7 @@ Live at: https://myfamily.unialt.no (Responsive (Mobile Friendly))
   
 ### About
 
-MyFamilyCart came to life as we / our tiny family needed a common
+MyFamilyCart came to life as our family needed a common
 place to save and share our shopping lists. The App lets you create different
 shopping carts (lists) where you can add and remove items.  
 
@@ -40,10 +39,18 @@ If you want to know more check out the [About Page](https://myfamily.unialt.no/a
 ### Roadmap
 
 The app is working well and we ended up using it more than I thought so the plan
-is to re-write the app in Node.js with GraphQL, socket.io and Vue.js.
+is to *re-write the app in Node.js with GraphQL, socket.io and Vue.js.*
 
 This will make a more responsive app with more realtime features and allow for realtime
 edits of items and more. Please add issues for wishes.
+
+Planned features:
+
+* Click editing of items
+* Items can be "clickable" (links)
+* Predictions will be cart related (Apple will not be suggested in IKEA cart)
+* Todolist with reccuring tasks
+* *maybe: Full blown callender function*
 
 The work has started and I will add a link to the repo as soon as the foundation is made.
 
