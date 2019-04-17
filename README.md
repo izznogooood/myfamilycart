@@ -88,7 +88,7 @@ apps take advantage of "normal" views as JS endpoints.
    
 * /users <-- User functionality
 
-* static/js/nunjucks/templates/ <-- Nunjucks (JS) templates
+* /static/js/nunjucks/templates/ <-- Nunjucks (JS) templates
 
 **Django Models / Database Tables**  
   
