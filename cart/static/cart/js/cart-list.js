@@ -5,7 +5,7 @@ function getCookie(name) {
 }
 
 // Dataclass
-class cart {
+class Cart {
     constructor(name, id = null, url = null) {
         this.name = name;
         this.id = id;
@@ -88,6 +88,6 @@ document.querySelector("#cart-form").addEventListener("submit", e => {
         UI.showAlert("Please enter an item...!", "danger");
     }
 
-    const cart = new cart(name);
+    const cart = new Cart(name);
     API.createItem(cart);
 });
