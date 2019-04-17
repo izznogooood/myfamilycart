@@ -93,9 +93,10 @@
 
 </div>
 
-<!-- Nunjucks JS Templating -->
+<!-- Nunjucks -->
 <script src="{% static 'js/nunjucks/nunjucks.min.js' %}"></script>
-<script>nunjucks.configure('{% static 'js/nunjucks/templates' %}', { autoescape: true })</script>
+<script src="{% static 'js/nunjucks/templates.js' %}"></script>
+<script>nunjucks.configure('{% static 'js/nunjucks' %}', { autoescape: true })</script>
 
 <script src="{% static 'cart/js/cart-detail.js' %}"></script>
 {% endblock content %}
