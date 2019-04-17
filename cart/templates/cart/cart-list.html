@@ -47,5 +47,10 @@
         <input type="submit" value="Add" class="btn btn-primary btn-block mt-4 font-weight-bold">
     </form>
 </div>
+
+<!-- Nunjucks JS Templating -->
+<script src="{% static 'js/nunjucks/nunjucks.min.js' %}"></script>
+<script>nunjucks.configure('{% static 'js/nunjucks/templates' %}', { autoescape: true })</script>
+
 <script src="{% static 'cart/js/cart-list.js' %}"></script>
 {% endblock content %}

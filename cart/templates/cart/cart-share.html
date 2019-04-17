@@ -10,7 +10,6 @@
             <br>
             (It has to be a registered user)
         </p>
-
         <form name="share" class="form-group" method="post" action="{% url 'cart:share-cart' cart.id %}">
             {% csrf_token %}
 
@@ -20,9 +19,11 @@
                 <input type="submit" class="btn btn-primary btn-block" value="Share!">
             </div>
         </form>
-
-
     </div>
+
+<!-- Nunjucks JS Templating -->
+<script src="{% static 'js/nunjucks/nunjucks.min.js' %}"></script>
+<script>nunjucks.configure('{% static 'js/nunjucks/templates' %}', { autoescape: true })</script>
 
 <script src="{% static 'cart/js/share.js' %}"></script>
 {% endblock content %}

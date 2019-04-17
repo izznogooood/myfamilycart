@@ -1,20 +1,7 @@
 <!--
 Todo: 
-
-Make Carts easier to spot / Color?
-remove or arrows
-
- * IMPLEMENT YARN, get rid of CDNs!!!
- * Tests
- * remove all CDN
- * CI/CD Pipeline
- * After signing up auto login
- * Fix the empty state, https://emptystat.es/
  * Does not work without JS: https://kryogenix.org/code/browser/everyonehasjs.html
- * Delete warning vs trash function (trashed boleen)
  * Can add the same item to a list twice, does not update the quantity but instead just adds it again
- * Adding -1 shows an error
- * no way to try the app without signing up
 -->
 
 ## MyFamilyCart
@@ -22,7 +9,7 @@ remove or arrows
 ![Models](doc/demo.png)
 
 
-Live at: https://myfamily.unialt.no (Responsive (Mobile Friendly))
+Live at: https://myfamily.unialt.no (Mobile First)
   
 ### About
 
@@ -38,28 +25,29 @@ If you want to know more check out the [About Page](https://myfamily.unialt.no/a
 
 ### Roadmap
 
-The app is working well and we ended up using it more than I thought so the plan
-is to *re-write the app in Node.js with GraphQL, socket.io and Vue.js.*
+The app is fulfilling it's purpose and we are using it daily. I've started on a project
+to *re-write the app in Node.js with GraphQL, socket.io and Vue.js.*
 
-This will make a more responsive app with more realtime features and allow for realtime
-edits of items and more. Please add issues for wishes.
+This will make the app more responsive with more realtime features and allow for realtime
+edits/actions on items and more. Please add issues if you have wishes.
 
 Planned features:
 
-* Click editing of items
+* Inline editing of items
 * Items can be "clickable" (links)
 * Predictions will be cart related (Apple will not be suggested in IKEA cart)
-* Todolist with reccuring tasks
+* Todolist with recurring tasks
 * *maybe: Full blown callender function*
 
-The work has started and I will add a link to the repo as soon as the foundation is made.
+The work has started and I will add a link to the new repo as soon as the prototype is made.
 
 ### Contribute
 As I mentioned above, work on a new platform has started. But you are welcome to correct bugs
-and contribute ideas.
+notify me of security issues and contribute ideas.
 
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
-with a bit of plain JavaScript (ES6) and a sprinkle of [Vue.js](https://vuejs.org/) along with 
+with a bit of plain JavaScript (ES6), [Nunjucks](https://mozilla.github.io/nunjucks/) templating
+and a sprinkle of [Vue.js](https://vuejs.org/) along with
 [Bootstrap 4](https://getbootstrap.com/).  
   
 If you are familiar with Django just clone the repo and have at it. `manage.py` has been 

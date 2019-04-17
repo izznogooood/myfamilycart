@@ -17,6 +17,7 @@ class Item {
         this.id = id;
         this.element /** @type {HTMLCanvasElement} */ = element;
     }
+
     removeElement() {
         this.element.remove();
     }
@@ -25,28 +26,28 @@ class Item {
 class API {
     static rmItem(item) {
         fetch(`./delete/${item.id}`)
-            .then(res => res.json())
-            .then(json => {
-                if (json["success"] === "true") {
-                    item.removeElement();
-                } else {
-                    showAlert(
-                        "There was a problem removing your item!",
-                        "danger"
-                    );
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                showAlert(err, "danger");
-            });
+          .then(res => res.json())
+          .then(json => {
+              if (json["success"] === "true") {
+                  item.removeElement();
+              } else {
+                  showAlert(
+                    "There was a problem removing your item!",
+                    "danger"
+                  );
+              }
+          })
+          .catch(err => {
+              console.log(err);
+              showAlert(err, "danger");
+          });
     }
 }
 
-// Look for list, then start listener for deleting single words from db.
+// Deleting single words .
 document.addEventListener("DOMContentLoaded", () => {
     const itemList /** @type {HTMLCanvasElement} */ = document.querySelector(
-        "#item-list"
+      "#item-list"
     );
     if (itemList) {
         itemList.addEventListener("click", e => {
@@ -56,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (target.classList.contains("delete")) {
                 const itemID =
-                    target.parentElement.previousElementSibling
-                        .previousElementSibling.previousElementSibling
-                        .innerHTML;
+                  target.parentElement.previousElementSibling
+                    .previousElementSibling.previousElementSibling
+                    .innerHTML;
                 const tableRowElement = target.parentElement.parentElement;
 
                 const item = new Item(itemID, tableRowElement);

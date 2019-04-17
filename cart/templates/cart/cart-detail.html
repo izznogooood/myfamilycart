@@ -92,5 +92,10 @@
     <!-- Modal end -->
 
 </div>
+
+<!-- Nunjucks JS Templating -->
+<script src="{% static 'js/nunjucks/nunjucks.min.js' %}"></script>
+<script>nunjucks.configure('{% static 'js/nunjucks/templates' %}', { autoescape: true })</script>
+
 <script src="{% static 'cart/js/cart-detail.js' %}"></script>
 {% endblock content %}

@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from .models import Profile
 
 
+# Creating user profile for later expansions
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:

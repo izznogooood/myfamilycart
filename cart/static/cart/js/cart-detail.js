@@ -14,31 +14,14 @@ class Item {
 
 class UI {
     static addItemToList(item) {
-        const theadTemplate = `
-            <table class="table table-striped mt-4">
-                <thead>
-                    <tr>
-                        <th width="15%">Quantity</th>
-                        <th>Item</th>
-                        <th width="15%"></th>
-                    </tr>
-                </thead>
-                <tbody id="item-list"></tbody>
-            </table>
-        `;
         if (document.querySelector("#empty")) {
             document.querySelector("#empty").remove();
-            document.querySelector("table").innerHTML = theadTemplate;
+            document.querySelector("table").innerHTML = nunjucks.render('todo-table.njk');
         }
 
         const tbody = document.querySelector("#item-list");
-
         const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.quantity}</td>
-            <td>${item.name}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
-        `;
+        row.innerHTML = nunjucks.render('todo.njk', {quantity: item.quantity, name: item.name});
         tbody.insertBefore(row, tbody.firstChild);
     }
 
@@ -91,18 +74,18 @@ class API {
             },
             body: data
         })
-            .then(res => {
-                return res.json();
-            })
-            .then(json => {
-                UI.addItemToList(json);
-                UI.clearFields();
-                buttonEventListener();
-            })
-            .catch(err => {
-                UI.showAlert(`Error: ${err}`, "danger");
-                console.log(err);
-            });
+          .then(res => {
+              return res.json();
+          })
+          .then(json => {
+              UI.addItemToList(json);
+              UI.clearFields();
+              buttonEventListener();
+          })
+          .catch(err => {
+              UI.showAlert(`Error: ${err}`, "danger");
+              console.log(err);
+          });
     }
 
     static delItem(item) {
@@ -126,34 +109,32 @@ class API {
     }
 }
 
-// Add Item
+// Add item
 document.querySelector("#cart-form").addEventListener("submit", e => {
     e.preventDefault();
 
-    let quantity = document.querySelector("#quantity").value;
+    let quantity = document.querySelector("#quantity").value || 1;
     const name = document.querySelector("#name").value;
 
     if (!name) {
         UI.showAlert("Please enter an item...!", "danger");
+    } else if (quantity <= 0) {
+        UI.showAlert('You can not add negative values to list.', 'danger')
     } else {
-        if (!quantity) {
-            quantity = 1;
-        }
         const item = new Item(quantity, name);
-
         API.createItem(item);
     }
 });
 
-// Remove Item
+// Remove item
 const buttonEventListener = () => {
     document.querySelector("#item-list").addEventListener("click", e => {
         e.preventDefault();
         if (e.target.classList.contains("delete")) {
             let item = {
                 quantity:
-                    e.target.parentElement.previousElementSibling
-                        .previousElementSibling.innerHTML,
+                e.target.parentElement.previousElementSibling
+                  .previousElementSibling.innerHTML,
                 name: e.target.parentElement.previousElementSibling.innerHTML
             };
 
@@ -163,7 +144,7 @@ const buttonEventListener = () => {
     });
 };
 
-// Start event listener to remove Items if Items
+// Eventlistener (Remove item)
 if (document.querySelector("#item-list")) {
     buttonEventListener();
 }

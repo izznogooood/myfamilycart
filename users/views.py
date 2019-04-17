@@ -1,15 +1,14 @@
+from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash, authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 from django.http import HttpResponseNotFound, JsonResponse
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash, authenticate, login
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib import auth
-
-from django.contrib.auth.models import User
-from .models import Word
 
 from .forms import RegisterForm, UpdateUserForm
+from .models import Word
 
 
 # ######################## User views #########################
@@ -114,7 +113,3 @@ def delete_word_item(request, pk):
 
     except Word.DoesNotExist:
         return HttpResponseNotFound('404')
-
-
-
-

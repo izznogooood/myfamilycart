@@ -93,7 +93,7 @@ def share_cart(request, pk):
 
                 return redirect('cart:cart', pk=cart.id)
 
-    return render(request, 'cart/share-cart.html', {'form': form, 'cart': cart})
+    return render(request, 'cart/cart-share.html', {'form': form, 'cart': cart})
 
 
 # ################## JavaScript API Endpoints ##################

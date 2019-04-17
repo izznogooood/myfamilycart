@@ -5,7 +5,7 @@ function getCookie(name) {
 }
 
 // Dataclass
-class Item {
+class cart {
     constructor(name, id = null, url = null) {
         this.name = name;
         this.id = id;
@@ -14,7 +14,7 @@ class Item {
 }
 
 class UI {
-    static addItemToList(item) {
+    static addCart(cart) {
         const empty = document.querySelector("#empty");
         if (empty) empty.remove();
 
@@ -29,8 +29,8 @@ class UI {
             "mt-4",
             "font-weight-bold"
         );
-        aButton.href = url.origin + item.url;
-        aButton.innerHTML = item.name;
+        aButton.href = url.origin + cart.url;
+        aButton.innerHTML = cart.name;
 
         div.appendChild(aButton);
     }
@@ -52,9 +52,9 @@ class UI {
 }
 
 class API {
-    static createItem(item) {
+    static createItem(cart) {
         const data = new FormData();
-        data.append("name", item.name);
+        data.append("name", cart.name);
 
         fetch("api/carts/create", {
             method: "post",
@@ -67,7 +67,7 @@ class API {
                 return res.json();
             })
             .then(json => {
-                UI.addItemToList(json);
+                UI.addCart(json);
                 UI.showAlert("Cart added...", "success");
                 UI.clearFields();
             })
@@ -88,7 +88,6 @@ document.querySelector("#cart-form").addEventListener("submit", e => {
         UI.showAlert("Please enter an item...!", "danger");
     }
 
-    const item = new Item(name);
-
-    API.createItem(item);
+    const cart = new cart(name);
+    API.createItem(cart);
 });
