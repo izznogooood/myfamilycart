@@ -47,8 +47,8 @@ notify me of security issues and contribute ideas.
 
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
 with a bit of plain JavaScript (ES6), [Nunjucks](https://mozilla.github.io/nunjucks/) templating
-and a sprinkle of [Vue.js](https://vuejs.org/) along with
-[Bootstrap 4](https://getbootstrap.com/).  
+(need compiling) and a sprinkle of [Vue.js](https://vuejs.org/) along with
+[Bootstrap 4](https://getbootstrap.com/).
   
 If you are familiar with Django just clone the repo and have at it. `manage.py` has been 
 altered to run `settings.dev` configuration with a SQLite database.  
@@ -68,7 +68,7 @@ to read the code.*
 **Functionality**
 
 Utilizing Django to handle users / auth / login / backend tasks while JS onePage
-apps take advantage of "normal" views as JS endpoints. 
+apps take advantage of basic Django views as endpoints.
 
 **Very Basic Overview**
 
