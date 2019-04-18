@@ -5,6 +5,7 @@ Todo:
 -->
 
 ## MyFamilyCart
+Protected by [Guardrails](https://www.guardrails.io/en).
 
 ![Models](doc/demo.png)
 
