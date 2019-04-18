@@ -46,7 +46,7 @@ As I mentioned above, work on a new platform has started. But you are welcome to
 notify me of security issues and contribute ideas.
 
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
-with a bit of plain JavaScript (ES6), [Nunjucks](https://mozilla.github.io/nunjucks/) templating
+with quite a bit of plain JavaScript (ES6), [Nunjucks](https://mozilla.github.io/nunjucks/) templating
 (need compiling) and a sprinkle of [Vue.js](https://vuejs.org/) along with
 [Bootstrap 4](https://getbootstrap.com/).
   
