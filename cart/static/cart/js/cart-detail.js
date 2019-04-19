@@ -16,12 +16,12 @@ class UI {
     static addItemToList(item) {
         if (document.querySelector("#empty")) {
             document.querySelector("#empty").remove();
-            document.querySelector("table").innerHTML = nunjucks.render('templates/todo-table.njk');
+            document.querySelector("table").innerHTML = nunjucks.render('views/todo-table.njk');
         }
 
         const tbody = document.querySelector("#item-list");
         const row = document.createElement("tr");
-        row.innerHTML = nunjucks.render('templates/todo.njk', {quantity: item.quantity, name: item.name});
+        row.innerHTML = nunjucks.render('views/todo.njk', {quantity: item.quantity, name: item.name});
         tbody.insertBefore(row, tbody.firstChild);
     }
 

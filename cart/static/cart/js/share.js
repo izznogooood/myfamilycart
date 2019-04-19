@@ -6,6 +6,6 @@ document.querySelector("#id_username").parentElement.append(legend);
 
 // Start spinner while waiting for Django (async mail coming in Vue version)
 document.querySelector("#submit").addEventListener("click", function () {
-    this.innerHTML = nunjucks.render('templates/spinner.njk');
+    this.innerHTML = nunjucks.render('views/spinner.njk');
     document.share.submit();
 });

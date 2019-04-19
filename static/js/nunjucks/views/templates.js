@@ -1,5 +1,5 @@
 (function () {
-    (window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["templates/spinner.njk"] = (function () {
+    (window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["views/spinner.njk"] = (function () {
         function root(env, context, frame, runtime, cb) {
             var lineno = 0;
             var colno = 0;
@@ -26,7 +26,7 @@
 })();
 
 (function () {
-    (window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["templates/todo.njk"] = (function () {
+    (window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["views/todo.njk"] = (function () {
         function root(env, context, frame, runtime, cb) {
             var lineno = 0;
             var colno = 0;
@@ -57,7 +57,7 @@
 })();
 
 (function () {
-    (window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["templates/todo-table.njk"] = (function () {
+    (window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["views/todo-table.njk"] = (function () {
         function root(env, context, frame, runtime, cb) {
             var lineno = 0;
             var colno = 0;
