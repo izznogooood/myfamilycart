@@ -76,9 +76,8 @@ def share_cart(request, pk):
             if user:
                 subject = f'MyFamily: {request.user.username} shared a cart with you.'
                 to = [user.email]
-                #  todo: maybe change this to a dynamic value.
                 from_email = 'myfamily@unialt.no'
-                uri = request.META['HTTP_HOST']
+                # uri = request.META['HTTP_HOST']
                 context = {
                     'username': user.username,
                     'sender': request.user.username
