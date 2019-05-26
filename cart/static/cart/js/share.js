@@ -8,4 +8,3 @@ document.querySelector("#id_username").parentElement.append(legend);
 document.querySelector("#submit").addEventListener("click", function () {
     this.innerHTML = nunjucks.render('views/spinner.njk');
     document.share.submit();
-});

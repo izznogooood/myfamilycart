@@ -4,3 +4,4 @@ gunicorn
 psycopg2
 bleach
 django-debug-toolbar
+python-dotenv

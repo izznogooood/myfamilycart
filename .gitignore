@@ -1,6 +1,7 @@
 __pycache__/
 venv
 .idea
-myfamily/settings/pro.py
 db.sqlite3
 migrations/
+*.env
+
