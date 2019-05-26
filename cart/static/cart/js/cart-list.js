@@ -23,11 +23,11 @@ class UI {
 
         const aButton = document.createElement("a");
         aButton.classList.add(
-            "btn",
-            "btn-info",
-            "btn-block",
-            "mt-4",
-            "font-weight-bold"
+          "btn",
+          "btn-info",
+          "btn-block",
+          "mt-4",
+          "font-weight-bold"
         );
         aButton.href = url.origin + cart.url;
         aButton.innerHTML = cart.name;
@@ -63,18 +63,18 @@ class API {
             },
             body: data
         })
-            .then(res => {
-                return res.json();
-            })
-            .then(json => {
-                UI.addCart(json);
-                UI.showAlert("Cart added...", "success");
-                UI.clearFields();
-            })
-            .catch(err => {
-                UI.showAlert(`Error: ${err}`, "danger");
-                console.log(err);
-            });
+          .then(res => {
+              return res.json();
+          })
+          .then(json => {
+              UI.addCart(json);
+              UI.showAlert("Cart added...", "success");
+              UI.clearFields();
+          })
+          .catch(err => {
+              UI.showAlert(`Error: ${err}`, "danger");
+              console.log(err);
+          });
     }
 }
 

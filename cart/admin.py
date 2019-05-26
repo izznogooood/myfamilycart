@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import Item, Cart
 
 
@@ -10,4 +11,3 @@ class ItemAdmin(admin.ModelAdmin):
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     pass
-

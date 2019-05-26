@@ -1,17 +1,15 @@
 import bleach
-
-from django.shortcuts import render, redirect
-from django.http import JsonResponse, HttpResponseNotFound
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.template.loader import get_template
 from django.core.mail import EmailMessage
+from django.http import JsonResponse, HttpResponseNotFound
+from django.shortcuts import render, redirect
+from django.template.loader import get_template
 
-from .forms import ShareCartForm
-
-from .models import Item, Cart
 from users.models import Word
+from .forms import ShareCartForm
+from .models import Item, Cart
 
 
 # ######################## User views #########################
@@ -192,14 +190,3 @@ def delete_cart(request, pk):
 
     except Cart.DoesNotExist:
         return HttpResponseNotFound('404')
-
-
-
-
-
-
-
-
-
-
-

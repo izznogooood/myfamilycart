@@ -11,4 +11,3 @@ class WordAdmin(admin.ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     pass
-

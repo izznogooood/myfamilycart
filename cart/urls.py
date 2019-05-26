@@ -1,13 +1,11 @@
 from django.urls import path
+
 from . import views as user_views
 
 app_name = 'cart'
 
 urlpatterns = [
     # JavaScript API Endpoints
-    # path('api/items/<int:cart_id>', user_views.get_items, name='items-json'),
-    # path('api/carts', user_views.get_carts, name='carts-json'),
-
     path('api/items/create', user_views.create_item, name='create-item'),
     path('api/carts/create', user_views.create_cart, name='create-cart'),
 
