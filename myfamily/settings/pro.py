@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 from .dev import *
 
 # Getting env variables
-email_env_path = os.path.join(BASE_DIR, '.env')
-load_dotenv(dotenv_path=email_env_path)
+env_path = os.path.join(BASE_DIR, '.env')
+load_dotenv(dotenv_path=env_path)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
