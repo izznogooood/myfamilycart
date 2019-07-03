@@ -1,4 +1,4 @@
-// Get coockie value (Django csrftoken)
+// Get cookie value (Django csrftoken)
 function getCookie(name) {
     let cookie = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
     return cookie ? cookie[2] : null;
@@ -16,12 +16,12 @@ class Cart {
 class UI {
     static addCart(cart) {
         const empty = document.querySelector("#empty");
-        if (empty) empty.remove();
-
         const div = document.querySelector("#cart-list");
         const url = new URL(document.URL);
-
         const aButton = document.createElement("a");
+
+        if (empty) empty.remove();
+
         aButton.classList.add(
           "btn",
           "btn-info",
@@ -37,10 +37,11 @@ class UI {
 
     static showAlert(msg, className) {
         const div = document.createElement("div");
+        const nav = document.querySelector("#nav");
+
         div.className = `alert alert-${className}`;
         div.appendChild(document.createTextNode(msg));
 
-        const nav = document.querySelector("#nav");
         nav.append(div);
 
         setTimeout(() => document.querySelector(".alert").remove(), 3000);
