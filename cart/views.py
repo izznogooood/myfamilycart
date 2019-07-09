@@ -65,6 +65,7 @@ def share_cart(request, pk):
                 try:
                     user = User.objects.get(email=email)
                 except User.DoesNotExist:
+                    # todo: Automatic creation of user and email password reset / login
                     messages.warning(request, f'A user with email: "{email}"" does not exist!')
 
             if user == request.user:
