@@ -14,7 +14,7 @@ RUN apk update \
     && apk add --no-cache bash
 
 RUN pip install --upgrade pip
-COPY requirements.bak /app/.
+COPY requirements.txt /app/.
 RUN pip install -r requirements.txt
 
 COPY . /app
