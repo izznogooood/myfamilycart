@@ -46,7 +46,6 @@
 
         {% if user.is_authenticated %}
 
-            {# todo: Animate this #}
             <i v-cloak v-if="display" @click="toggleMenu" class="fas fa-times float-right" data-toggle="collapse"
                data-target="#collapse" aria-expanded="false" aria-controls="collapse"></i>
             <i v-else @click="toggleMenu" class="fas fa-bars float-right" data-toggle="collapse" data-target="#collapse"
