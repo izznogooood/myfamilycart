@@ -1,0 +1,8 @@
+django
+django-crispy-forms
+gunicorn
+psycopg2
+bleach
+django-debug-toolbar
+python-dotenv
+channels
