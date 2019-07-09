@@ -65,7 +65,7 @@ def share_cart(request, pk):
                 try:
                     user = User.objects.get(email=email)
                 except User.DoesNotExist:
-                    messages.warning(request, 'Email does not exist!')
+                    messages.warning(request, f'A user with email: "{email}"" does not exist!')
 
             if user == request.user:
                 messages.warning(request, 'Schizophrenia Warning, consider seeing a doctor.')
