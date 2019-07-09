@@ -26,8 +26,8 @@ If you want to know more check out the [About Page](https://myfamily.unialt.no/a
 
 ### Roadmap
 
-The app is fulfilling it's purpose and we are using it daily. I've started on a project
-to *re-write the app in Node.js with GraphQL, socket.io and Vue.js.*
+The app is fulfilling it's purpose and we are using it daily. I've started integrating
+django channels to make use of websockets.
 
 This will make the app more responsive with more realtime features and allow for realtime
 edits/actions on items and more. Please add issues if you have wishes.
@@ -40,16 +40,12 @@ Planned features:
 * Todolist with recurring tasks
 * *maybe: Full blown callender function*
 
-The work has started and I will add a link to the new repo as soon as the prototype is made.
-
 ### Contribute
-As I mentioned above, work on a new platform has started. But you are welcome to correct bugs
-notify me of security issues and contribute ideas.
 
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
 with quite a bit of plain JavaScript (ES6), [Nunjucks](https://mozilla.github.io/nunjucks/) templating
 (need compiling) and a sprinkle of [Vue.js](https://vuejs.org/) along with
-[Bootstrap 4](https://getbootstrap.com/).
+[Bootstrap 4](https://getbootstrap.com/) (themed).
   
 If you are familiar with Django just clone the repo and have at it. `manage.py` has been 
 altered to run `settings.dev` configuration with a SQLite database.  
@@ -60,16 +56,10 @@ create an issue so we (especially me) can evolve and benefit from your input.
   
 No issue is to small, I want your input/ideas.
 
-*Notabene: Please do not make pull requests directly to the master branch.  
-Any suggestions (packing) that makes the code less readable will be rejected as it 
-goes against the purpose of the project which is for everyone to learn / be able
-to read the code.*
-
-
 **Functionality**
 
 Utilizing Django to handle users / auth / login / backend tasks while JS onePage
-apps take advantage of basic Django views as endpoints.
+apps take advantage of basic Django views as API endpoints.
 
 **Very Basic Overview**
 
