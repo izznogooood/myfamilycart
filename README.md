@@ -1,9 +1,3 @@
-<!--
-Todo: 
- * Does not work without JS: https://kryogenix.org/code/browser/everyonehasjs.html
- * Can add the same item to a list twice, does not update the quantity but instead just adds it again
--->
-
 ## MyFamilyCart
 Protected by [Guardrails](https://www.guardrails.io/en).
 
@@ -14,8 +8,9 @@ Live at: https://myfamily.unialt.no (Mobile First)
   
 ### About
 
-MyFamilyCart came to life as our family needed a common
-place to save and share our shopping lists. The App lets you create different
+MyFamilyCart came to life as we needed a common
+place to save and share our shopping lists and I needed an app to test some new technologies.  
+The App lets you create different
 shopping carts (lists) where you can add and remove items.  
 
 Key features:
@@ -26,13 +21,9 @@ If you want to know more check out the [About Page](https://myfamily.unialt.no/a
 
 ### Roadmap
 
-The app is fulfilling it's purpose and we are using it daily. I've started integrating
-django channels to make use of websockets.
+The app is fulfilling it's purpose and we are using it daily.  
 
-This will make the app more responsive with more realtime features and allow for realtime
-edits/actions on items and more. Please add issues if you have wishes.
-
-Planned features:
+Planned features (Rewrite in [Quasar Framework](https://quasar.dev/)):
 
 * Inline editing of items
 * Items can be "clickable" (links)
@@ -40,7 +31,7 @@ Planned features:
 * Todolist with recurring tasks
 * *maybe: Full blown callender function*
 
-### Contribute
+### Technologies
 
 This projects main platform / framework is [Django](https://www.djangoproject.com/) 
 with quite a bit of plain JavaScript (ES6), [Nunjucks](https://mozilla.github.io/nunjucks/) templating
@@ -51,10 +42,6 @@ If you are familiar with Django just clone the repo and have at it. `manage.py` 
 altered to run `settings.dev` configuration with a SQLite database.  
   
 Feel free to use this code for education / courses / tutorials and or what ever you want. 
-If you see something wrong or se a better solution for anything I would appreciate if you 
-create an issue so we (especially me) can evolve and benefit from your input.  
-  
-No issue is to small, I want your input/ideas.
 
 **Functionality**
 
