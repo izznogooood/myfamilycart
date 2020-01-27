@@ -9,6 +9,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = False
 
+ALLOWED_HOSTS = ['myfamilycart.herokuapp.com']
+
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
