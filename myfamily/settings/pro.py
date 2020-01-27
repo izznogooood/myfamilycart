@@ -3,29 +3,29 @@ import dj_database_url
 
 from .dev import *
 
-# Getting env variables
-
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# DEBUG = False
+DEBUG = False
 
 ALLOWED_HOSTS = ['myfamilycart.herokuapp.com']
 
-# INSTALLED_APPS = [
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'users.apps.UsersConfig',
-#     'cart.apps.CartConfig',
-#     'crispy_forms',
-# ]
+INSTALLED_APPS = [
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
+    'cart.apps.CartConfig',
+    'crispy_forms',
+]
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 STATIC_URL = '/staticfiles/'
+
+# TODO: Add email config...
 
 # Removing email DEV settings.
 # del EMAIL_BACKEND
