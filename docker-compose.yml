@@ -22,8 +22,12 @@ services:
       - DATABASE=postgres
     depends_on:
       - db
+  
   db:
     image: postgres:10.5-alpine
     restart: always
     volumes:
-      - ./postgres:/var/lib/postgresql/data/
+      - myfamilycart_postgres:/var/lib/postgresql/data/
+  
+volumes: 
+  myfamilycart_postgres:

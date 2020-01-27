@@ -4,4 +4,6 @@ venv
 db.sqlite3
 migrations/
 *.env
+.vscode
+
 

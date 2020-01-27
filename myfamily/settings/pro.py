@@ -1,11 +1,9 @@
-# noinspection PyPackageRequirements
-from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
 
 from .dev import *
 
 # Getting env variables
-env_path = os.path.join(BASE_DIR, '.env')
-load_dotenv(dotenv_path=env_path)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -22,24 +20,20 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('SQL_ENGINE'),
-        'NAME': os.getenv('SQL_DATABASE'),
-        'USER': os.getenv('SQL_USER'),
-        'PASSWORD': os.getenv('SQL_PASSWORD'),
-        'HOST': os.getenv('SQL_HOST'),
-        'PORT': os.getenv('SQL_PORT'),
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 STATIC_URL = '/staticfiles/'
 
 # Removing email DEV settings.
-del EMAIL_BACKEND
+# del EMAIL_BACKEND
 
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+# EMAIL_HOST = os.getenv('EMAIL_HOST')
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_PORT = os.getenv('EMAIL_PORT')
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())

@@ -20,17 +20,17 @@ from django.urls import path, include
 from users import views as user_views
 
 urlpatterns = [
-    path('register/', user_views.register, name='register'),
-    path('delete-user/', user_views.del_user, name='delete-user'),
-    path('profile/', user_views.profile, name='profile'),
-    path('about/', user_views.about, name='about'),
-    path('top50/', user_views.top50, name='top50'),
-    path('top50/delete/<int:pk>', user_views.delete_word_item, name='delete-word-item'),
-    path('password/', user_views.change_password, name='change-password'),
-    path('delete-all-words/', user_views.delete_words, name='delete-all-words'),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('', include('cart.urls', namespace='cart')),
+    path("register/", user_views.register, name="register"),
+    path("delete-user/", user_views.del_user, name="delete-user"),
+    path("profile/", user_views.profile, name="profile"),
+    path("about/", user_views.about, name="about"),
+    path("top50/", user_views.top50, name="top50"),
+    path("top50/delete/<int:pk>", user_views.delete_word_item, name="delete-word-item"),
+    path("password/", user_views.change_password, name="change-password"),
+    path("delete-all-words/", user_views.delete_words, name="delete-all-words"),
+    path("login/", auth_views.LoginView.as_view(template_name="users/login.html"), name="login"),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path("", include("cart.urls", namespace="cart")),
 ]
 
 #  Adding Django Debug Toolbar and Admin Site in debug mode.
@@ -38,7 +38,4 @@ if settings.DEBUG:
     from django.contrib import admin
     import debug_toolbar
 
-    urlpatterns = [
-                      path('__debug__/', include(debug_toolbar.urls)),
-                      path('admin/', admin.site.urls),
-                  ] + urlpatterns
+    urlpatterns = [path("__debug__/", include(debug_toolbar.urls)), path("admin/", admin.site.urls)] + urlpatterns

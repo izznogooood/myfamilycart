@@ -1,7 +1,8 @@
 django
 django-crispy-forms
+django_heroku
 gunicorn
-psycopg2
+psycopg2-binary
 bleach
 django-debug-toolbar
 python-dotenv
