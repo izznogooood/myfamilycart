@@ -7,7 +7,7 @@ from .dev import *
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = ['myfamilycart.herokuapp.com']
 
