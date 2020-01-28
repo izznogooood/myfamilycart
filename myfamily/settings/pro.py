@@ -9,21 +9,21 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['myfamilycart.herokuapp.com']
 
-# INSTALLED_APPS = [
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'users.apps.UsersConfig',
-#     'cart.apps.CartConfig',
-#     'crispy_forms',
-# ]
+INSTALLED_APPS = [
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
+    'cart.apps.CartConfig',
+    'crispy_forms',
+]
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
-STATIC_URL = '/staticfiles/'
+# STATIC_URL = '/staticfiles/'
 
 # TODO: Add email config...
 
