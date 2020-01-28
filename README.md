@@ -4,7 +4,7 @@ Protected by [Guardrails](https://www.guardrails.io/en).
 ![Models](doc/demo.png)
 
 
-Live at: https://myfamily.unialt.no (Mobile First)
+Live at: https://myfamilycart.herokuapp.com/ (Mobile First)
   
 ### About
 
@@ -17,13 +17,11 @@ Key features:
  * Shopping lists
  * Share lists with other users
   
-If you want to know more check out the [About Page](https://myfamily.unialt.no/about)
+If you want to know more check out the [About Page](https://myfamilycart.herokuapp.com/about)
 
 ### Roadmap
 
 The app is fulfilling it's purpose and we are using it daily.  
-
-Planned features (Rewrite in [Quasar Framework](https://quasar.dev/)):
 
 * Inline editing of items
 * Items can be "clickable" (links)
