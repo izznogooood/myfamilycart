@@ -4,8 +4,6 @@ Protected by [Guardrails](https://www.guardrails.io/en).
 ![Models](doc/demo.png)
 
 
-Live at: https://myfamilycart.herokuapp.com/ (Mobile First)
-  
 ### About
 
 MyFamilyCart came to life as we needed a common
@@ -17,17 +15,9 @@ Key features:
  * Shopping lists
  * Share lists with other users
   
-If you want to know more check out the [About Page](https://myfamilycart.herokuapp.com/about)
-
 ### Roadmap
 
-The app is fulfilling it's purpose and we are using it daily.  
-
-* Inline editing of items
-* Items can be "clickable" (links)
-* Predictions will be cart related (Apple will not be suggested in IKEA cart)
-* Todolist with recurring tasks
-* *maybe: Full blown callender function*
+May experiment with more technologies but not used anymore.
 
 ### Technologies
 
